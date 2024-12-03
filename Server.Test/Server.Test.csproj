@@ -20,4 +20,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database.Test\" />
+    <Folder Include="Server.Testing\" />
+  </ItemGroup>
+
 </Project>
