@@ -6,7 +6,7 @@ function Logo() {
     window.location.pathname = "/";
   };
   return (
-    <button onclick={handleclick}>
+    <button onClick={handleclick}>
       <img src={logo} alt="Home" />
     </button>
   );
