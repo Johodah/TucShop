@@ -1,59 +1,35 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import SocialMediaLinks from './SocialMediaLinks';
 
 describe('SocialMediaLinks Component', () => {
-  beforeEach(() => {
-    delete global.open;
-    global.open = jest.fn();
+  test('renders all social media links with correct hrefs', () => {
+    render(<SocialMediaLinks />);
+    
+    const links = [
+      { href: "https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping", alt: "Tiktok" },
+      { href: "https://www.youtube.com/user/TUCtelevision", alt: "Youtube" },
+      { href: "https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se", alt: "linkedin" },
+      { href: "https://www.instagram.com/tucyrkeshogskola/", alt: "Instagram" },
+      { href: "https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr", alt: "Facebook" }
+    ];
+
+    links.forEach(({ href, alt }) => {
+      const linkElement = screen.getByAltText(alt).closest('a');
+      expect(linkElement).toHaveAttribute('href', href);
+      expect(linkElement).toHaveAttribute('target', '_blank');
+      expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
+    });
   });
 
-  it('should navigate to the correct Tiktok page when the Tiktok image is clicked', () => {
+  test('renders all images with the correct alt text', () => {
     render(<SocialMediaLinks />);
-    const tiktokLink = screen.getByAltText('Tiktok').closest('a');
-    fireEvent.click(tiktokLink);
-    expect(global.open).toHaveBeenCalledWith(
-      'https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping',
-      '_blank'
-    );
-  });
-
-  it('should navigate to the correct Youtube page when the Youtube image is clicked', () => {
-    render(<SocialMediaLinks />);
-    const youtubeLink = screen.getByAltText('Youtube').closest('a');
-    fireEvent.click(youtubeLink);
-    expect(global.open).toHaveBeenCalledWith(
-      'https://www.youtube.com/user/TUCtelevision',
-      '_blank'
-    );
-  });
-
-  it('should navigate to the correct Linkedin page when the Linkedin image is clicked', () => {
-    render(<SocialMediaLinks />);
-    const linkedinLink = screen.getByAltText('linkedin').closest('a');
-    fireEvent.click(linkedinLink);
-    expect(global.open).toHaveBeenCalledWith(
-      'https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se',
-      '_blank'
-    );
-  });
-
-  it('should navigate to the correct Instagram page when the Instagram image is clicked', () => {
-    render(<SocialMediaLinks />);
-    const instagramLink = screen.getByAltText('Instagram').closest('a');
-    fireEvent.click(instagramLink);
-    expect(global.open).toHaveBeenCalledWith(
-      'https://www.instagram.com/tucyrkeshogskola/',
-      '_blank'
-    );
-  });
-
-  it('should navigate to the correct Facebook page when the Facebook image is clicked', () => {
-    render(<SocialMediaLinks />);
-    const facebookLink = screen.getByAltText('Facebook').closest('a');
-    fireEvent.click(facebookLink);
-    expect(global.open).toHaveBeenCalledWith(
-      'https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr',
-      '_blank'
-    );
+    
+    const altTexts = ["Tiktok", "Youtube", "linkedin", "Instagram", "Facebook"];
+    
+    altTexts.forEach((alt) => {
+      expect(screen.getByAltText(alt)).toBeInTheDocument();
+    });
   });
 });
