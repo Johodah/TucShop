@@ -1,5 +1,5 @@
 import React from 'react';
-import '/src/App.css'
+import '../../App.css'; 
 import tiktokLogo from '../../Images/tiktok-logo.png';
 import youtubeLogo from '../../Images/youtube-logo.png';
 import linkedinLogo from '../../Images/linkedin-logo.png';
