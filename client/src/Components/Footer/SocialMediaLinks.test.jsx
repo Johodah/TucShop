@@ -3,14 +3,14 @@ import SocialMediaLinks from './SocialMediaLinks';
 
 describe('SocialMediaLinks Component', () => {
   beforeEach(() => {
-    // Mock window.open
+    // Mock window.open to simulate opening in a new tab
     global.open = jest.fn();
   });
 
   it('should navigate to the correct Tiktok page when the Tiktok image is clicked', () => {
     render(<SocialMediaLinks />);
     const tiktokImage = screen.getByAltText('Tiktok');
-    userEvent.click(tiktokImage);
+    userEvent.click(tiktokImage); // Trigger click event
     expect(global.open).toHaveBeenCalledWith(
       'https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping',
       '_blank'
