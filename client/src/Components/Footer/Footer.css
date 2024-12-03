@@ -1,13 +1,15 @@
 .Footer {
-    background-color: lightgray;
+    background-color: white;
     width: 100%; 
     height: auto;
     box-sizing: border-box; 
     margin-top: auto;
     bottom: 0%;
     position: absolute;
-    padding-top: 7rem;
-  }
+    padding-top: 1.5rem;
+    border-top: 0.125rem solid black; 
+}
+
   
   .SocialMediaLogoContainer {
     display: flex;
@@ -18,5 +20,16 @@
   
   .SocialMedia-logo {
     height: 2em;
+  }
+  .pageLogoContainer {
+    display: flex;
+    justify-content: left;
+    gap: 1em;
+    padding-left: 5rem
+  }
+
+  .Page-Logo {
+    width: 14rem;
+    padding-bottom: 1rem;
   }
   
