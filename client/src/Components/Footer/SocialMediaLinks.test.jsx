@@ -15,7 +15,7 @@ describe('SocialMediaLinks Component', () => {
     expect(tiktokImage).toBeInTheDocument();
 
     userEvent.click(tiktokImage);
-    expect(global.open).toBe('https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping', '_blank');    
+    expect(global.open).toHaveBeenCalledWith('https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping', '_blank');    
   });
 
   it('should navigate to the correct Youtube page when the Youtube image is clicked', () => {
@@ -24,7 +24,7 @@ describe('SocialMediaLinks Component', () => {
     expect(youtubeImage).toBeInTheDocument();
 
     userEvent.click(youtubeImage);
-    expect(global.open).toBe('https://www.youtube.com/user/TUCtelevision', '_blank'); 
+    expect(global.open).toHaveBeenCalledWith('https://www.youtube.com/user/TUCtelevision', '_blank'); 
   });
 
   it('should navigate to the correct Linkedin page when the Linkedin image is clicked', () => {
@@ -33,7 +33,7 @@ describe('SocialMediaLinks Component', () => {
     expect(linkedinImage).toBeInTheDocument();
 
     userEvent.click(linkedinImage);
-    expect(global.open).toBe('https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se', '_blank'); 
+    expect(global.open).toHaveBeenCalledWith('https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se', '_blank'); 
   });
 
   it('should navigate to the correct Instagram page when the Instagram image is clicked', () => {
@@ -42,7 +42,7 @@ describe('SocialMediaLinks Component', () => {
     expect(instagramImage).toBeInTheDocument();
 
     userEvent.click(instagramImage);
-    expect(global.open).toBe('https://www.instagram.com/tucyrkeshogskola/', '_blank'); 
+    expect(global.open).toHaveBeenCalledWith('https://www.instagram.com/tucyrkeshogskola/', '_blank'); 
   });
 
   it('should navigate to the correct Facebook page when the Facebook image is clicked', () => {
@@ -51,6 +51,6 @@ describe('SocialMediaLinks Component', () => {
     expect(facebookImage).toBeInTheDocument();
 
     userEvent.click(facebookImage);
-    expect(global.open).toBe('https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr', '_blank'); 
+    expect(global.open).toHaveBeenCalledWith('https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr', '_blank'); 
   });
 });
