@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
+import HomePage from "../HomePage";
 import Logo from "../Components/Modules/Logo";
 import { describe, test, expect } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
@@ -20,7 +21,14 @@ describe("Header Component", () => {
 describe("Routing Tests", () => {
   test("should render the Homepage", () => {
     render(<HomePage />);
-    fireEvent.click(screen.getByAltText("Home"));
+    render(<Logo />);
+    fireEvent.click(screen.getByRole("button"));
     expect(window.location.pathname).toBe("/");
   });
+
+  // test("should navigate tto the Contact page", () => {
+  //   render(<HomePage />);
+  //   fireEvent.click(screen.getByText("Contact"));
+  //   expect(window.location.pathname).toBe("/contact");
+  // });
 });
