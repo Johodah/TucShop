@@ -26,9 +26,9 @@ describe("Routing Tests", () => {
     expect(window.location.pathname).toBe("/");
   });
 
-  // test("should navigate tto the Contact page", () => {
-  //   render(<HomePage />);
-  //   fireEvent.click(screen.getByText("Contact"));
-  //   expect(window.location.pathname).toBe("/contact");
-  // });
+  test("should navigate to the Checkout page", () => {
+    render(<Cart />);
+    fireEvent.click(screen.getByText("Cart"));
+    expect(window.location.pathname).toBe("/cart");
+  });
 });
