@@ -16,7 +16,7 @@ const SocialMediaLinks = () => {
         <img src={youtubeLogo} alt="Youtube" className="SocialMedia-logo" />
       </a>
       <a href="https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se" target="_blank" rel="noopener noreferrer">
-        <img src={linkedinLogo} alt="Linkdin" className="SocialMedia-logo" />
+        <img src={linkedinLogo} alt="linkedin" className="SocialMedia-logo" />
       </a>
       <a href="https://www.instagram.com/tucyrkeshogskola/" target="_blank" rel="noopener noreferrer">
         <img src={instagramLogo} alt="Instagram" className="SocialMedia-logo" />
