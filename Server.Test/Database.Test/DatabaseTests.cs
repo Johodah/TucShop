@@ -33,15 +33,9 @@ namespace Server.Test.Database.Test
 
             var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
             Assert.NotNull(savedCustomer);
-            Assert.Equal(customer.CustomerName, savedCustomer.CustomerName);
-            Assert.Equal(customer.CustomerEmail, savedCustomer.CustomerEmail);
-            Assert.Equal(customer.CustomerPassword, savedCustomer.CustomerPassword);
-            Assert.Equal(customer.Phone, savedCustomer.Phone);
-            Assert.Equal(customer.Address, savedCustomer.Address);
-            Assert.Equal(customer.CreatedAt, savedCustomer.CreatedAt);
-            Assert.Equal(customer.UpdatedAt, savedCustomer.UpdatedAt);
+            VerifyCustomerData(customer, savedCustomer);
 
-            
+
             _output.WriteLine($"Customer added: {savedCustomer.CustomerName}, {savedCustomer.CustomerEmail}");
         }
 
@@ -54,13 +48,7 @@ namespace Server.Test.Database.Test
 
             var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
             Assert.NotNull(savedCustomer);
-            Assert.Equal(customer.CustomerName, savedCustomer.CustomerName);
-            Assert.Equal(customer.CustomerEmail, savedCustomer.CustomerEmail);
-            Assert.Equal(customer.CustomerPassword, savedCustomer.CustomerPassword);
-            Assert.Equal(customer.Phone, savedCustomer.Phone);
-            Assert.Equal(customer.Address, savedCustomer.Address);
-            Assert.Equal(customer.CreatedAt, savedCustomer.CreatedAt);
-            Assert.Equal(customer.UpdatedAt, savedCustomer.UpdatedAt);
+            VerifyCustomerData(customer, savedCustomer);
 
             _output.WriteLine($"Customer retrieved: {savedCustomer.CustomerName}, {savedCustomer.CustomerEmail}");
         }
@@ -75,13 +63,7 @@ namespace Server.Test.Database.Test
 
             var savedProduct = _context.Products.FirstOrDefault(p => p.ProductName == product.ProductName);
             Assert.NotNull(savedProduct);
-            Assert.Equal(product.ProductName, savedProduct.ProductName);
-            Assert.Equal(product.ProductDescription, savedProduct.ProductDescription);
-            Assert.Equal(product.Price, savedProduct.Price);
-            Assert.Equal(product.Stock, savedProduct.Stock);
-            Assert.Equal(product.Location, savedProduct.Location);
-            Assert.Equal(product.CreatedAt, savedProduct.CreatedAt);
-            Assert.Equal(product.UpdatedAt, savedProduct.UpdatedAt);
+            VerifyProductData(product, savedProduct);
 
             _output.WriteLine($"Product added: {savedProduct.ProductName}, {savedProduct.ProductDescription}");
         }
@@ -112,6 +94,27 @@ namespace Server.Test.Database.Test
                 CreatedAt = new DateOnly(2021, 5, 1),
                 UpdatedAt = new DateOnly(2021, 5, 1)
             };
+        }
+        private void VerifyCustomerData(Customer expected, Customer actual)
+        {
+            Assert.Equal(expected.CustomerName, actual.CustomerName);
+            Assert.Equal(expected.CustomerEmail, actual.CustomerEmail);
+            Assert.Equal(expected.CustomerPassword, actual.CustomerPassword);
+            Assert.Equal(expected.Phone, actual.Phone);
+            Assert.Equal(expected.Address, actual.Address);
+            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
+            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
+        }
+
+        private void VerifyProductData(Product expected, Product actual)
+        {
+            Assert.Equal(expected.ProductName, actual.ProductName);
+            Assert.Equal(expected.ProductDescription, actual.ProductDescription);
+            Assert.Equal(expected.Price, actual.Price);
+            Assert.Equal(expected.Stock, actual.Stock);
+            Assert.Equal(expected.Location, actual.Location);
+            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
+            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
         }
     }
 }
