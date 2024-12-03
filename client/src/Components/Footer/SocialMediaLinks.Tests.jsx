@@ -14,8 +14,9 @@ describe('SocialMediaLinks Component', () => {
     const tiktokImage = screen.getByAltText('Tiktok');
     expect(tiktokImage).toBeInTheDocument();
   
+    global.open = jest.fn();
     userEvent.click(tiktokImage);
-    expect(window.location.href).toBe('https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping');
+    expect(global.open).toHaveBeenCalledWith('https://www.tiktok.com/discover/tuc-h%C3%B6gskola-j%C3%B6nk%C3%B6ping', '_blank');    
   });
 
   it('should navigate to the correct Youtube page when the Youtube image is clicked', () => {
@@ -23,8 +24,9 @@ describe('SocialMediaLinks Component', () => {
     const youtubeImage = screen.getByAltText('Youtube');
     expect(youtubeImage).toBeInTheDocument();
   
+    global.open = jest.fn();
     userEvent.click(youtubeImage);
-    expect(window.location.href).toBe('https://www.youtube.com/user/TUCtelevision'); 
+    expect(global.open).toHaveBeenCalledWith('https://www.youtube.com/user/TUCtelevision'); 
   });
 
   it('should navigate to the correct Linkedin page when the Linkedin image is clicked', () => {
@@ -32,8 +34,9 @@ describe('SocialMediaLinks Component', () => {
     const linkedinImage = screen.getByAltText('Linkedin');
     expect(linkedinImage).toBeInTheDocument();
   
+    global.open = jest.fn();
     userEvent.click(linkedinImage);
-    expect(window.location.href).toBe('https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se'); 
+    expect(window.location.href).toHaveBeenCalledWith('https://www.linkedin.com/company/tuc-sweden-ab/?originalSubdomain=se'); 
   });
 
   it('should navigate to the correct Instagram page when the Instagram image is clicked', () => {
@@ -41,8 +44,9 @@ describe('SocialMediaLinks Component', () => {
     const instagramImage = screen.getByAltText('Instagram');
     expect(instagramImage).toBeInTheDocument();
 
+    global.open = jest.fn();
     userEvent.click(instagramImage);
-    expect(window.location.href).toBe('https://www.instagram.com/tucyrkeshogskola/'); 
+    expect(window.location.href).toHaveBeenCalledWith('https://www.instagram.com/tucyrkeshogskola/'); 
   });
 
   it('should navigate to the correct Facebook page when the Facebook image is clicked', () => {
@@ -50,7 +54,8 @@ describe('SocialMediaLinks Component', () => {
     const facebookImage = screen.getByAltText('Facebook');
     expect(facebookImage).toBeInTheDocument();
 
+    global.open = jest.fn();
     userEvent.click(facebookImage);
-    expect(window.location.href).toBe('https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr'); 
+    expect(window.location.href).toHaveBeenCalledWith('https://www.facebook.com/tucsweden/?locale2=en_GB&_rdr'); 
   });
 });
