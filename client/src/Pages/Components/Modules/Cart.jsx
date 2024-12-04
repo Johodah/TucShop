@@ -1,6 +1,8 @@
 import React from "react";
 
 function Cart() {
+  const [count, setCount] = React.useState(2);
+
   const handleClick = () => {
     window.location.pathname = "/checkout";
   };
@@ -11,9 +13,10 @@ function Cart() {
         <img
           alt="cart"
           src="https://img.icons8.com/ios/452/shopping-cart.png"
-          width={40}
+          width={30}
         />
       </button>
+      {count > 0 ? <div className="cart-count">{count}</div> : null}
     </>
   );
 }
