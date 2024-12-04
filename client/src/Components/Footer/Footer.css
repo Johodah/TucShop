@@ -47,15 +47,23 @@
   color: black;
   text-decoration: underline;
 }
+.LinksToServicesTextContainer {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  width: auto; 
+  padding-left: 25rem;
+}
 
-.LinksToServicesTextFooter {
+.LinksToServicesTextFooter1,
+.LinksToServicesTextFooter2,
+.LinksToServicesTextFooter3 {
   color: black;
   flex-direction: column;
-  justify-content: end;
-  justify-content: right;
-  gap: 0em;
+  justify-content: flex-start;
   width: fit-content;
-  position:relative;
-  top:-10rem;
-  padding-left: 30rem;
+  position: relative;
+  margin-top: -10rem;
+  margin-left: 5rem; 
+  margin-right: 5rem; 
 }
