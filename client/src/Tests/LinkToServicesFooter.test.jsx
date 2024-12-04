@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom'; 
-import LinkToServicesFooter from './LinkToServicesFooter';
+import LinkToServicesFooter from '../Pages/Components/Modules/LinkToServicesFooter';
 
 describe('Contact Us Link', () => {
   test('navigates to the correct page when clicked', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import SocialMediaLinks from './SocialMediaLinks';
+import SocialMediaLinks from '../Pages/Components/Modules/SocialMediaLinks';
 
 describe('SocialMediaLinks Component', () => {
   test('renders all social media links with correct hrefs', () => {

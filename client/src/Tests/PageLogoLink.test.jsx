@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom'; 
-import PageLogoLink from './PageLogoLink';
+import PageLogoLink from '../Pages/Components/Modules/PageLogoLink';
 
 describe('ImageLinkComponent', () => {
   test('navigates to the correct page when image is clicked', () => {

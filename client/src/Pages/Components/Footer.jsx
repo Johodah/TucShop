@@ -1,8 +1,8 @@
 import React from 'react';
-import './Footer.css';
-import SocialMediaLinks from './SocialMediaLinks';
-import PageLogoLink from './PageLogoLink'; 
-import LinkToServicesFooter from './LinkToServicesFooter';
+import './Modules/Footer.css';
+import SocialMediaLinks from './Modules/SocialMediaLinks';
+import PageLogoLink from './Modules/PageLogoLink'; 
+import LinkToServicesFooter from './Modules/LinkToServicesFooter';
 
 const Footer = () => {
   return (
