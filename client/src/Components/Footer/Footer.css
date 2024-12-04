@@ -31,11 +31,11 @@
   gap: 1em;
   width: fit-content;
   position: relative;
-  left: 5rem;
+  left: 10vh;
 }
 
 .Page-Logo {
-  width: 14rem;
+  width:28vh;
   padding-bottom: 1rem;
 }
 
@@ -52,7 +52,7 @@
   justify-content: flex-start; 
   align-items: flex-start; 
   width: auto; 
-  padding-left: 25rem;
+  padding-left: 50vh;
 }
 
 .LinksToServicesTextFooter1,
@@ -64,6 +64,7 @@
   width: fit-content;
   position: relative;
   margin-top: -10rem;
-  margin-left: 5rem; 
-  margin-right: 5rem; 
+  margin-left: 10vh; 
+  margin-right: 10vh; 
+  font-size:2vh;
 }
