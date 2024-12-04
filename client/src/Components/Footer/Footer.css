@@ -1,0 +1,22 @@
+.Footer {
+    background-color: lightgray;
+    width: 100%; 
+    height: auto;
+    box-sizing: border-box; 
+    margin-top: auto;
+    bottom: 0%;
+    position: absolute;
+    padding-top: 7rem;
+  }
+  
+  .SocialMediaLogoContainer {
+    display: flex;
+    justify-content: left;
+    gap: 1em;
+    padding-left: 5rem
+  }
+  
+  .SocialMedia-logo {
+    height: 2em;
+  }
+  
