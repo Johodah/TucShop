@@ -28,6 +28,12 @@ describe("Header Component", () => {
     expect(screen.getByAltText("cart")).toBeInTheDocument();
     expect(screen.queryByRole("button")).toBeTruthy();
   });
+
+  test("should render the User button", () => {
+    render(<UserPop />);
+    expect(screen.getByAltText("user")).toBeInTheDocument();
+    expect(screen.getByRole("button")).toBeTruthy();
+  });
 });
 
 describe("Routing Tests", () => {
