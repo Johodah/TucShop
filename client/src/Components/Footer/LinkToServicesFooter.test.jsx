@@ -49,7 +49,7 @@ describe('Contact Us Link', () => {
     expect(personalDataPolicyLink).toHaveAttribute('target', '_blank');
   });
 
-  test('navigates to the correct external URL when Log in to ForgetPoint link is clicked', () => {
+  test('navigates to the correct external URL when Log in to TUC link is clicked', () => {
     render(
       <Router>
         <LinkToServicesFooter />
@@ -60,7 +60,7 @@ describe('Contact Us Link', () => {
 
     fireEvent.click(loginTUCLink);
 
-    expect(loginForgetPointLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); 
-    expect(loginForgetPointLink).toHaveAttribute('target', '_blank');
+    expect(loginTUCLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); 
+    expect(loginTUCLink).toHaveAttribute('target', '_blank');
   });
 });

@@ -29,7 +29,7 @@ const LinkToServicesFooter = () => {
             </div>
             <div className="LinksToServicesTextFooter3">
                 <a href="https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx" target="_blank">
-                <div className="LoginTUCLink"> <p>Log in to ForgetPoint</p> </div>
+                <div className="LoginTUCLink"> <p>Log in to TUC</p> </div>
                 </a>
             </div>
         </div>
