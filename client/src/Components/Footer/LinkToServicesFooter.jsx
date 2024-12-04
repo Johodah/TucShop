@@ -5,7 +5,9 @@ const LinkToServicesFooter = () => {
   return (
     <div className="LinkTextFooterContactUs">
       <Link to="/Contact">
-        Contact Us
+      <div className="ContactUsTextLink">
+      Contact Us
+      </div>
       </Link>
     </div>
   );

@@ -32,4 +32,11 @@
     width: 14rem;
     padding-bottom: 1rem;
   }
+  .Page-Logo:hover {
+    cursor:pointer;
+  }
   
+  .ContactUsTextLink {
+    color: black;
+    text-decoration: underline;
+  }
