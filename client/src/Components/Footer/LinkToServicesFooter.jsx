@@ -11,19 +11,18 @@ const LinkToServicesFooter = () => {
                 <div className="LinkTextFooterContactUs">
                     <Link to="/Contact">
                         <div className="ContactUsTextLink">
-                            Contact Us
+                            <p>Contact Us</p>
                         </div>
                     </Link>
                 </div>
             </div>
             <div className="LinksToServicesTextFooter2">
-            <p>About the Website
-            Cookie policy</p>
-            <p>Personal data policy</p>
-            <p>View and update your cookie consent</p>
+                <p>About the Website Cookie policy</p>
+                <p>Personal data policy</p>
+                <p>View and update your cookie consent</p>
             </div>
             <div className="LinksToServicesTextFooter3">
-            <p>Log in to ForgetPoint</p>
+                <p>Log in to ForgetPoint</p>
             </div>
         </div>
     );
