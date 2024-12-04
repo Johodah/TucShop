@@ -56,11 +56,11 @@ describe('Contact Us Link', () => {
       </Router>
     );
 
-    const loginForgetPointLink = screen.getByRole('link', { name: 'Log in to ForgetPoint' });
+    const loginTUCLink = screen.getByRole('link', { name: 'Log in to TUC' });
 
-    fireEvent.click(loginForgetPointLink);
+    fireEvent.click(loginTUCLink);
 
-    expect(loginForgetPointLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); // Adjust the URL as needed
-    expect(loginForgetPointLink).toHaveAttribute('target', '_blank');
+    expect(loginTUCLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); // Adjust the URL as needed
+    expect(loginTUCLink).toHaveAttribute('target', '_blank');
   });
 });
