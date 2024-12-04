@@ -20,8 +20,15 @@ function UserPop() {
       </button>
       {show && (
         <div className="toast ">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <input type="email" name="email" id="email" placeholder="Email" />
           <button className="login">Log in</button>
-          <button>Sign up</button>
+          <button className="signup">Sign up</button>
         </div>
       )}
     </div>
