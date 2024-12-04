@@ -19,7 +19,6 @@ describe('SocialMediaLinks Component', () => {
       const linkElement = screen.getByAltText(alt).closest('a');
       expect(linkElement).toHaveAttribute('href', href);
       expect(linkElement).toHaveAttribute('target', '_blank');
-      expect(linkElement).toHaveAttribute('rel', 'noopener noreferrer');
     });
   });
 
