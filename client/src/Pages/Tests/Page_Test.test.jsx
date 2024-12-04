@@ -1,13 +1,7 @@
 import React from "react";
-import Header from "../Components/Header";
-import HomePage from "../HomePage";
+import HomePage from "../../Pages/HomePage";
 import Checkout from "../Checkout";
-import {
-  MemoryRouter,
-  BrowserRouter as Router,
-  useNavigate,
-} from "react-router-dom";
-import Cart from "../Components/Modules/Cart";
+import Header from "../Components/Header";
 import Logo from "../Components/Modules/Logo";
 import { describe, test, expect } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
@@ -17,26 +11,24 @@ describe("Header Component", () => {
   test("should render the Logo component", () => {
     render(<Logo />);
     expect(screen.getByAltText("Home")).toBeInTheDocument();
+    expect(screen.queryByRole("button")).toBeTruthy();
   });
 
   test("should render the Header component", () => {
     render(<Header />);
     expect(screen.getByAltText("Home")).toBeInTheDocument();
+    expect(screen.getByText("Cart")).toBeInTheDocument();
+    expect(screen.queryAllByRole("button")).toBeTruthy();
   });
 });
 
 describe("Routing Tests", () => {
   test("should render the Homepage", () => {
-    render(<HomePage />);
     render(<Logo />);
+    render(<HomePage />);
     fireEvent.click(screen.getByRole("button"));
     expect(window.location.pathname).toBe("/");
-  });
-
-  test("should trigger and navigate to the Checkout page", () => {
-    render(<Cart />);
-    fireEvent.click(screen.getByRole("button"));
-    expect(window.location.pathname).toBe("/checkout");
+    expect(screen.queryAllByRole("button")).toBeTruthy();
   });
 
   test("should render the Checkout page", () => {

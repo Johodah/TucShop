@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
+        {/* footer */}
       </Router>
     </>
   );
