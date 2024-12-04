@@ -56,7 +56,7 @@ describe('Contact Us Link', () => {
       </Router>
     );
 
-    const loginTUCLink = screen.getByRole('link', { name: 'Log in to TUC' });
+    const loginTUCLink = screen.getByRole('link', { name: 'Log in to CUT' });
 
     fireEvent.click(loginTUCLink);
 
