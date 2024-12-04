@@ -60,7 +60,7 @@ describe('Contact Us Link', () => {
 
     fireEvent.click(loginForgetPointLink);
 
-    expect(loginForgetPointLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); // Adjust the URL as needed
+    expect(loginForgetPointLink).toHaveAttribute('href', 'https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx'); 
     expect(loginForgetPointLink).toHaveAttribute('target', '_blank');
   });
 });

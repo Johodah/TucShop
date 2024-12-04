@@ -17,12 +17,20 @@ const LinkToServicesFooter = () => {
                 </div>
             </div>
             <div className="LinksToServicesTextFooter2">
-                <p>About the Website Cookie policy</p>
-                <p>Personal data policy</p>
-                <p>View and update your cookie consent</p>
+                <a href="https://www.tucsweden.se/cookiepolicy-tuc-yrkeshoskola/" target="_blank">
+                <div className="CookiePolicyLink"> <p>About the Website Cookie policy</p> </div>
+                </a>
+                <a href="https://www.tucsweden.se/personuppgiftspolicy/" target="_blank">
+                <div className="PersonalDataPolicyLink"><p>Personal data policy</p> </div>
+                </a>
+                <a href="https://www.tucsweden.se/uppdatera-dina-cookieinstillningar/" target="_blank">
+                <div className="UpdateCookieSettingsLink"> <p>View and update your cookie consent</p> </div>
+                </a>
             </div>
             <div className="LinksToServicesTextFooter3">
-                <p>Log in to ForgetPoint</p>
+                <a href="https://tucsweden.learnpoint.se/LoginForms/LoginForm.aspx?ReturnUrl=%2Fdefault.aspx" target="_blank">
+                <div className="LoginTUCLink"> <p>Log in to ForgetPoint</p> </div>
+                </a>
             </div>
         </div>
     );
