@@ -10,5 +10,32 @@ button {
   cursor: pointer;
 }
 
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+.user-cart{
+  position: relative;
+  right: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+.toast {
+  position: absolute ;
+  top: 100px;  
+  right: 50px;
+  background-color: cadetblue;
+}
+
 
 

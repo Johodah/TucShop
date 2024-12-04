@@ -5,10 +5,12 @@ import UserPop from "./Modules/UserPop";
 
 function Header() {
   return (
-    <div>
+    <div className="header-container">
       <Logo />
-      <UserPop />
-      <Cart />
+      <div className="user-cart">
+        <UserPop />
+        <Cart />
+      </div>
     </div>
   );
 }

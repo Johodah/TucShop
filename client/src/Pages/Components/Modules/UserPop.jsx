@@ -14,12 +14,12 @@ function UserPop() {
         <img
           src="https://img.icons8.com/?size=100&id=83190&format=png&color=000000"
           alt="user"
-          width={40}
+          width={50}
           data-testid="user-image"
         />
       </button>
       {show && (
-        <div>
+        <div className="toast">
           <button className="login">Log in</button>
           <button>Sign up</button>
         </div>
