@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class Admin
 {
-    public int Id { get; set; }
+    public int AdminId { get; set; }
 
     [Required]
     [MaxLength(50)]
@@ -13,7 +13,11 @@ public class Admin
     public string AdminEmail { get; set; }
     [Required]
     [MaxLength(20)]
+    [MinLength(8)]
+    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$", ErrorMessage = "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")]
     public string AdminPassword { get; set; }
+
+    public bool IsAdmin { get; set; } = true;
 
     public DateOnly CreatedAt { get; set; }
     public DateOnly UpdatedAt { get; set; }

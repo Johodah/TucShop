@@ -14,6 +14,8 @@ namespace Server.Database
         public DbSet<OrderHistory> OrderHistories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -46,12 +48,45 @@ namespace Server.Database
                     Location = "Distans",
                     CreatedAt = new DateOnly(2022, 10, 10),
                     UpdatedAt = new DateOnly(2022, 10, 10)
+                },
+                new Product
+                {
+                    ProductId = 3,
+                    ProductName = "CSS",
+                    ProductDescription = "Lär dig mer om CSS och att göra en snygg hemsida",
+                    Price = 650,
+                    Stock = 30,
+                    Location = "Linköping",
+                    CreatedAt = new DateOnly(2022, 10, 10),
+                    UpdatedAt = new DateOnly(2022, 10, 10)
+                },
+                new Product
+                {
+                    ProductId = 4,
+                    ProductName = "JavaScript",
+                    ProductDescription = "Lär dig mer om JavaScript",
+                    Price = 800,
+                    Stock = 30,
+                    Location = "Kalmar",
+                    CreatedAt = new DateOnly(2022, 10, 10),
+                    UpdatedAt = new DateOnly(2022, 10, 10)
+                },
+                new Product
+                {
+                    ProductId = 5,
+                    ProductName = "React",
+                    ProductDescription = "Lär dig mer om React",
+                    Price = 1200,
+                    Stock = 30,
+                    Location = "Norrköping",
+                    CreatedAt = new DateOnly(2022, 10, 10),
+                    UpdatedAt = new DateOnly(2022, 10, 10)
                 });
 
             modelBuilder.Entity<Customer>().HasData(
                new Customer
                {
-                   Id = 1,
+                   CustomerId = 1,
                    CustomerName = "John Doe",
                    CustomerEmail = "john.doe@example.com",
                    CustomerPassword = "password123",
@@ -62,7 +97,7 @@ namespace Server.Database
                },
                new Customer
                {
-                   Id = 2,
+                   CustomerId = 2,
                    CustomerName = "Jane Smith",
                    CustomerEmail = "jane.smith@example.com",
                    CustomerPassword = "password456",
@@ -78,9 +113,6 @@ namespace Server.Database
                 {
                     OrderId = 1,
                     CustomerId = 1,
-                    ProductId = 1,
-                    Quantity = 2,
-                    TotalPrice = 1000,
                     CreatedAt = new DateOnly(2021, 3, 1),
                     UpdatedAt = new DateOnly(2021, 3, 1)
                 },
@@ -88,17 +120,32 @@ namespace Server.Database
                 {
                     OrderId = 2,
                     CustomerId = 2,
+                    CreatedAt = new DateOnly(2021, 4, 1),
+                    UpdatedAt = new DateOnly(2021, 4, 1)
+                });
+
+            modelBuilder.Entity<OrderDetail>().HasData(
+                new OrderDetail
+                {
+                    OrderDetailId = 1,
+                    OrderId = 1,
+                    ProductId = 1,
+                    Quantity = 1,
+                    TotalPrice = 500,
+                },
+                new OrderDetail
+                {
+                    OrderDetailId = 2,
+                    OrderId = 2,
                     ProductId = 2,
                     Quantity = 1,
                     TotalPrice = 1000,
-                    CreatedAt = new DateOnly(2021, 4, 1),
-                    UpdatedAt = new DateOnly(2021, 4, 1)
                 });
 
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    Id = 1,
+                    AdminId = 1,
                     AdminName = "Admin One",
                     AdminEmail = "admin.one@example.com",
                     AdminPassword = "admin123",
