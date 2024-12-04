@@ -7,7 +7,13 @@ function Cart() {
 
   return (
     <>
-      <button onClick={handleClick}>Cart</button>
+      <button onClick={handleClick}>
+        <img
+          alt="cart"
+          src="https://img.icons8.com/ios/452/shopping-cart.png"
+          width={40}
+        />
+      </button>
     </>
   );
 }

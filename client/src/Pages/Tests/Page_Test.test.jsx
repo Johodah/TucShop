@@ -13,7 +13,7 @@ describe("Header Component", () => {
   test("should render the Header component", () => {
     render(<Header />);
     expect(screen.getByAltText("Home")).toBeInTheDocument();
-    expect(screen.getByText("Cart")).toBeInTheDocument();
+    expect(screen.getByAltText("cart")).toBeInTheDocument();
     expect(screen.queryAllByRole("button")).toBeTruthy();
   });
 
@@ -25,7 +25,7 @@ describe("Header Component", () => {
 
   test("should render the Cart component", () => {
     render(<Cart />);
-    expect(screen.getByText("Cart")).toBeInTheDocument();
+    expect(screen.getByAltText("cart")).toBeInTheDocument();
     expect(screen.queryByRole("button")).toBeTruthy();
   });
 });
