@@ -4,6 +4,7 @@ using Xunit;
 using Server.Database;
 using Server.Database.Models;
 using Xunit.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server.Test.Database.Test
 {
@@ -28,13 +29,11 @@ namespace Server.Test.Database.Test
         {
             var customer = CreateTestCustomer();
 
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            AddAndSaveEntity(customer);
 
             var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
             Assert.NotNull(savedCustomer);
             VerifyCustomerData(customer, savedCustomer);
-
 
             _output.WriteLine($"Customer added: {savedCustomer.CustomerName}, {savedCustomer.CustomerEmail}");
         }
@@ -43,8 +42,7 @@ namespace Server.Test.Database.Test
         public void CanRetrieveCustomer()
         {
             var customer = CreateTestCustomer();
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            AddAndSaveEntity(customer);
 
             var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
             Assert.NotNull(savedCustomer);
@@ -58,14 +56,60 @@ namespace Server.Test.Database.Test
         {
             var product = CreateTestProduct();
 
-            _context.Products.Add(product);
-            _context.SaveChanges();
+            AddAndSaveEntity(product);
 
             var savedProduct = _context.Products.FirstOrDefault(p => p.ProductName == product.ProductName);
             Assert.NotNull(savedProduct);
             VerifyProductData(product, savedProduct);
 
             _output.WriteLine($"Product added: {savedProduct.ProductName}, {savedProduct.ProductDescription}");
+        }
+
+        [Fact]
+        public void CanAddOrderHistory()
+        {
+            var customer = CreateTestCustomer();
+            var product = CreateTestProduct();
+            AddAndSaveEntity(customer);
+            AddAndSaveEntity(product);
+
+            var orderHistory = CreateTestOrderHistory(customer.Id, product.ProductId);
+            AddAndSaveEntity(orderHistory);
+
+            var savedOrderHistory = _context.OrderHistories.FirstOrDefault(o => o.OrderId == orderHistory.OrderId);
+            Assert.NotNull(savedOrderHistory);
+            VerifyOrderHistoryData(orderHistory, savedOrderHistory);
+
+            _output.WriteLine($"OrderHistory added: OrderId={savedOrderHistory.OrderId}, CustomerId={savedOrderHistory.CustomerId}, ProductId={savedOrderHistory.ProductId}");
+        }
+
+        [Fact]
+        public void CanRetrieveOrderHistoryWithCustomer()
+        {
+            var customer = CreateTestCustomer();
+            var product = CreateTestProduct();
+            AddAndSaveEntity(customer);
+            AddAndSaveEntity(product);
+
+            var orderHistory = CreateTestOrderHistory(customer.Id, product.ProductId);
+            AddAndSaveEntity(orderHistory);
+
+            var savedOrderHistory = _context.OrderHistories
+                .Where(o => o.OrderId == orderHistory.OrderId)
+                .Include(o => o.Customer)
+                .FirstOrDefault();
+            Assert.NotNull(savedOrderHistory);
+            Assert.NotNull(savedOrderHistory.Customer);
+            VerifyOrderHistoryData(orderHistory, savedOrderHistory);
+            VerifyCustomerData(customer, savedOrderHistory.Customer);
+
+            _output.WriteLine($"OrderHistory retrieved with Customer: OrderId={savedOrderHistory.OrderId}, CustomerName={savedOrderHistory.Customer.CustomerName}");
+        }
+
+        private void AddAndSaveEntity<T>(T entity) where T : class
+        {
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         private Customer CreateTestCustomer()
@@ -95,6 +139,20 @@ namespace Server.Test.Database.Test
                 UpdatedAt = new DateOnly(2021, 5, 1)
             };
         }
+
+        private OrderHistory CreateTestOrderHistory(int customerId, int productId)
+        {
+            return new OrderHistory
+            {
+                CustomerId = customerId,
+                ProductId = productId,
+                Quantity = 10,
+                TotalPrice = 1500,
+                CreatedAt = new DateOnly(2023, 6, 1),
+                UpdatedAt = new DateOnly(2023, 6, 1)
+            };
+        }
+
         private void VerifyCustomerData(Customer expected, Customer actual)
         {
             Assert.Equal(expected.CustomerName, actual.CustomerName);
@@ -113,6 +171,17 @@ namespace Server.Test.Database.Test
             Assert.Equal(expected.Price, actual.Price);
             Assert.Equal(expected.Stock, actual.Stock);
             Assert.Equal(expected.Location, actual.Location);
+            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
+            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
+        }
+
+        private void VerifyOrderHistoryData(OrderHistory expected, OrderHistory actual)
+        {
+            Assert.Equal(expected.OrderId, actual.OrderId);
+            Assert.Equal(expected.CustomerId, actual.CustomerId);
+            Assert.Equal(expected.ProductId, actual.ProductId);
+            Assert.Equal(expected.Quantity, actual.Quantity);
+            Assert.Equal(expected.TotalPrice, actual.TotalPrice);
             Assert.Equal(expected.CreatedAt, actual.CreatedAt);
             Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
         }
