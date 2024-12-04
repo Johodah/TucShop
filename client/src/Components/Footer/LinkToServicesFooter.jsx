@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 
 const LinkToServicesFooter = () => {
   return (
-    <div className="LinkTextFooterContactUs">
-      <Link to="/Contact">
-      <div className="ContactUsTextLink">
-      Contact Us
+    <div className="LinksToServicesTextFooter">
+      <p>We at CUT</p>
+      <p>Whistle blowing</p>
+      <p>Graphic manual</p>
+      <div className="LinkTextFooterContactUs">
+        <Link to="/Contact">
+          <div className="ContactUsTextLink">
+            Contact Us
+          </div>
+        </Link>
       </div>
-      </Link>
     </div>
   );
 };
