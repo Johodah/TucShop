@@ -10,7 +10,6 @@ const Footer = () => {
       <PageLogoLink />
       <SocialMediaLinks />
       <LinkToServicesFooter />
-      <p className="Footer-text"></p>
     </footer>
   );
 };
