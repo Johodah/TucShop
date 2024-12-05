@@ -14,13 +14,8 @@ describe("Header Component", () => {
     render(<Header />);
     expect(screen.getByAltText("Home")).toBeInTheDocument();
     expect(screen.getByAltText("cart")).toBeInTheDocument();
+    expect(screen.getByAltText("user")).toBeInTheDocument();
     expect(screen.queryAllByRole("button")).toBeTruthy();
-  });
-
-  test("should render the Logo component", () => {
-    render(<Logo />);
-    expect(screen.getByAltText("Home")).toBeInTheDocument();
-    expect(screen.queryByRole("button")).toBeTruthy();
   });
 
   test("should render the Cart component", () => {
