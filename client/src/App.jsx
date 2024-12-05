@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react';
 import React from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 import Homepage from "./Pages/HomePage";
 import Checkout from "./Pages/Checkout";
-import "./App.css";
 import Header from "./Pages/Components/Header";
+import Footer from './Pages/Components/Footer'; 
 
 function App() {
   return (
@@ -15,7 +18,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
-        {/* footer */}
+        <Footer />
       </Router>
     </>
   );

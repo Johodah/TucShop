@@ -1,0 +1,75 @@
+.Footer {
+  background-color: white;
+  width: 100%;
+  height: 25%;
+  box-sizing: border-box;
+  margin-top: auto;
+  bottom: 0%;
+  position: absolute;
+  padding-top: 1.5rem;
+  border-top: 0.125rem solid black;
+}
+
+
+.SocialMediaLogoContainer {
+  display: flex;
+  justify-content: left;
+  gap: 1em;
+  width: fit-content;
+  position: relative;
+  left: 5rem;
+}
+
+
+.SocialMedia-logo {
+  height: 2em;
+}
+
+.pageLogoContainer {
+  display: flex;
+  justify-content: left;
+  gap: 1em;
+  width: fit-content;
+  position: relative;
+  left: 10vh;
+}
+
+.Page-Logo {
+  width:14rem;
+  padding-bottom: 1rem;
+}
+
+.Page-Logo:hover {
+  cursor: pointer;
+}
+
+.LinksToServicesTextContainer {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  width: auto; 
+  padding-left: 50vh;
+}
+
+.LinksToServicesTextFooter1,
+.LinksToServicesTextFooter2,
+.LinksToServicesTextFooter3 {
+  color: black;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: fit-content;
+  position: relative;
+  margin-top: -10rem;
+  margin-left: 10vh; 
+  margin-right: 10vh; 
+  font-size:2vh;
+}
+
+.ContactUsTextLink,
+.CookiePolicyLink,
+.PersonalDataPolicyLink,
+.UpdateCookieSettingsLink,
+.LoginTUCLink {
+  color: black;
+  text-decoration: underline;
+}
