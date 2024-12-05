@@ -16,6 +16,6 @@ describe('ImageLinkComponent', () => {
 
     fireEvent.click(image);
 
-    expect(window.location.pathname).toBe('/Home');
+    expect(window.location.pathname).toBe('/');
   });
 });
