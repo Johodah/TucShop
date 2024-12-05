@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import pageLogo from '../../Images/CUT-logo.png';
+import pageLogo from './Images/CUT-logo.png';
 
 const PageLogoLink = () => {
   const handleClick = () => {
