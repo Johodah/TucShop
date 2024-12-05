@@ -6,7 +6,7 @@ const PageLogoLink = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/Home');
+    window.location.pathname = "/";
   };
 
   return (
