@@ -8,6 +8,7 @@ import Homepage from "./Pages/HomePage";
 import Checkout from "./Pages/Checkout";
 import Header from "./Pages/Components/Header";
 import Footer from './Pages/Components/Footer'; 
+import Contact from './Pages/Contact';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
