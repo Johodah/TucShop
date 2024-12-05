@@ -1,49 +1,53 @@
-.Footer {
+.footer {
   background-color: white;
   width: 100%;
-  height: 25%;
+  height: 15%;
   box-sizing: border-box;
   margin-top: auto;
   bottom: 0%;
   position: absolute;
   padding-top: 1.5rem;
   border-top: 0.125rem solid black;
+  overflow-y: hidden;
 }
 
 
-.SocialMediaLogoContainer {
+.social-media-logo-container {
   display: flex;
   justify-content: left;
-  gap: 1em;
+  gap: 0.5em;
   width: fit-content;
   position: relative;
-  left: 5rem;
+  left: 5.25rem;
+  top: -1.5rem;
 }
 
 
-.SocialMedia-logo {
-  height: 2em;
+.social-media-logo {
+  height: 1.5em;
+
 }
 
-.pageLogoContainer {
+.page-logo-container {
   display: flex;
   justify-content: left;
   gap: 1em;
   width: fit-content;
   position: relative;
   left: 10vh;
+  top: -0.5rem;
 }
 
-.Page-Logo {
-  width:14rem;
+.page-logo {
+  width:10rem;
   padding-bottom: 1rem;
 }
 
-.Page-Logo:hover {
+.page-Logo:hover {
   cursor: pointer;
 }
 
-.LinksToServicesTextContainer {
+.links-to-services-text-container {
   display: flex;
   justify-content: flex-start; 
   align-items: flex-start; 
@@ -51,25 +55,25 @@
   padding-left: 50vh;
 }
 
-.LinksToServicesTextFooter1,
-.LinksToServicesTextFooter2,
-.LinksToServicesTextFooter3 {
+.links-to-services-text-footer1,
+.links-to-services-text-footer2,
+.links-to-services-text-footer3 {
   color: black;
   flex-direction: column;
   justify-content: flex-start;
   width: fit-content;
   position: relative;
-  margin-top: -10rem;
+  margin-top: -9.25rem;
   margin-left: 10vh; 
   margin-right: 10vh; 
   font-size:2vh;
 }
 
-.ContactUsTextLink,
-.CookiePolicyLink,
-.PersonalDataPolicyLink,
-.UpdateCookieSettingsLink,
-.LoginTUCLink {
+.contact-us-text-link,
+.cookie-policy-text-link,
+.personal-data-policy-text-link,
+.update-cookie-settings-text-link,
+.login-TUC-text-link {
   color: black;
   text-decoration: underline;
 }
