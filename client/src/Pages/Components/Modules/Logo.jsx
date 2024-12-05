@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../../public/logoTRans.png";
+import logo from "../../../../public/logo.png";
 
 function Logo() {
   const handleclick = () => {
@@ -7,7 +7,7 @@ function Logo() {
   };
   return (
     <button onClick={handleclick}>
-      <img src={logo} alt="Home" />
+      <img src={logo} alt="Home" width={250} data-testid="logo-image" />
     </button>
   );
 }

@@ -1,6 +1,14 @@
 import React from "react";
 
 function HomePage() {
-  return <h1>This is the HomePage</h1>;
+  return (
+    <>
+      <h1>Welcome to CUT👑!</h1>
+      <p>
+        Check the different courses bellow🤩 <br /> or <br /> search you
+        favourite course in the searchbar🔎!
+      </p>
+    </>
+  );
 }
 export default HomePage;
