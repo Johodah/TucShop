@@ -6,7 +6,7 @@ import LinkToServicesFooter from './Modules/LinkToServicesFooter';
 
 const Footer = () => {
   return (
-    <footer className="Footer">
+    <footer className="footer">
       <PageLogoLink />
       <SocialMediaLinks />
       <LinkToServicesFooter />

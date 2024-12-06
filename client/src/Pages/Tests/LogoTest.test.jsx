@@ -19,7 +19,7 @@ vi.mock("../Componets/Modules/Logo", () => ({
         <img
           src="/public/logo.png"
           alt="logo"
-          width={250}
+          width={200}
           data-testid="logo-image"
         />
       </button>
@@ -41,6 +41,6 @@ describe("Logo Component", () => {
 
     expect(image).toHaveAttribute("src", "/public/logo.png");
     expect(image).toHaveAttribute("alt", "Home");
-    expect(image).toHaveAttribute("width", "250");
+    expect(image).toHaveAttribute("width", "200");
   });
 });

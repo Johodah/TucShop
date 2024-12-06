@@ -8,8 +8,8 @@ const PageLogoLink = () => {
   };
 
   return (
-    <div className="pageLogoContainer"> 
-      <img src={pageLogo} alt="Go to Home" onClick={handleClick} className="Page-Logo" />
+    <div className="page-logo-container"> 
+      <img src={pageLogo} alt="Go to Home" onClick={handleClick} className="page-logo" />
     </div>
   );
 };
