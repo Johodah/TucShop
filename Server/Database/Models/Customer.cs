@@ -4,18 +4,24 @@ namespace Server.Database.Models
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string CustomerName { get; set; }
+        [MaxLength(25)]
+        public string CustomerFirstName { get; set; }
+
+        [Required]
+        [MaxLength(25)]
+        public string CustomerLastName { get; set; }
 
         [Required]
         [EmailAddress]
         public string CustomerEmail { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(50)]
+        [MinLength(8)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$", ErrorMessage = "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")]
         public string CustomerPassword { get; set; }
 
         [Phone]

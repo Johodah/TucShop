@@ -9,19 +9,15 @@ namespace Server.Database.Models
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int Quantity { get; set; }
-
-        [ForeignKey("Product")]
-        public int ProductId { get; set; }
-
-        [Range(0, float.MaxValue)]
-        public float TotalPrice { get; set; }
         public DateOnly CreatedAt { get; set; }
         public DateOnly UpdatedAt { get; set; }
 
-        public Customer Customer { get; set; }
-        public Product Product { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+
+        [NotMapped]
+        public decimal TotalPrice => OrderDetails?.Sum(od => od.TotalPrice) ?? 0;
     }
 }
+
