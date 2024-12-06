@@ -68,14 +68,25 @@ button {
   font-weight: bold;
 }
 
+.course-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem; 
+  padding: 0 2rem; 
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center; 
+  box-sizing: border-box; 
+}
+
+
 
 .course-card-container {
   height: 20rem;
   width: 15rem;
-  ;
   border-radius: 5%;
   background-color: gray;
-  margin: 2rem;
+  justify-content: center;
 }
 
 .course-card-image {
