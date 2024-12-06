@@ -90,6 +90,8 @@ button {
   margin: 0 auto;
   justify-content: center; 
   box-sizing: border-box; 
+  margin-bottom: 4rem;
+  padding-left: 5rem ;
 }
 
 
