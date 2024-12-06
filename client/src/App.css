@@ -6,6 +6,7 @@
   margin: 0 auto;
   text-align: center;
 }
+
 button {
   background-color: white;
   border: none;
@@ -22,7 +23,7 @@ button {
   border-bottom: 0.125rem solid black;
 }
 
-.user-cart{
+.user-cart {
   position: relative;
   right: 100px;
   display: flex;
@@ -34,8 +35,8 @@ button {
 }
 
 .toast {
-  position: absolute ;
-  top: 50px;  
+  position: absolute;
+  top: 50px;
   right: 90px;
   background-color: cadetblue;
   border-radius: 10%;
@@ -44,7 +45,7 @@ button {
 }
 
 .cart-count {
-  position:absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
   background-color: red;
@@ -55,7 +56,8 @@ button {
   font-weight: bold;
 }
 
-.login, .signup {
+.login,
+.signup {
   background-color: rgb(236, 236, 236);
   border: none;
   cursor: pointer;
@@ -63,7 +65,73 @@ button {
   margin: 0.5rem;
   width: 10rem;
   font-size: small;
-  font-weight: bold ;
+  font-weight: bold;
 }
 
 
+.course-card-container {
+  height: 20rem;
+  width: 15rem;
+  ;
+  border-radius: 5%;
+  background-color: gray;
+  margin: 2rem;
+}
+
+.course-card-image {
+  height: 7.3125rem;
+  width: 13rem;
+  margin-top: 1rem;
+  border-radius: 5%;
+}
+
+.course-card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
+  margin-top: -0.5rem;
+}
+
+.course-card-subject {
+  justify-self: left;
+  margin-top: -2rem;
+  margin-left: 1rem;
+  font-weight: bold;
+  color: black;
+}
+
+.course-card-description {
+  margin-top: -1.3rem;
+  font-size: 0.8rem;
+  color: black;
+}
+
+.course-card-tags {
+  justify-self: right;
+  margin-right: 1rem;
+  font-size: 0.8rem;
+  margin-top: -0.75rem;
+  color: black;
+}
+
+.course-card-price {
+  color:black;
+  font-weight: bold;
+  margin-top: -1rem;
+  margin-bottom: -0.15rem;
+}
+
+.course-card-buy-button {
+  background-color: black;
+  color: white;
+  width: 6rem;
+  height: 2rem;
+}
+
+
+.course-card-buy-button-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: -0.6rem;
+}
