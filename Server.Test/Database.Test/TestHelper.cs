@@ -38,6 +38,16 @@ namespace Server.Test.Database.Test
             };
         }
 
+        public static OrderHistory CreateTestOrder(int customerId)
+        {
+            return new OrderHistory
+            {
+                CustomerId = customerId,
+                CreatedAt = new DateOnly(2021, 1, 1),
+                UpdatedAt = new DateOnly(2021, 1, 1)
+            };
+        }
+
         public static void AssertCustomerProperties(Customer expected, Customer actual)
         {
             Assert.NotNull(actual);
@@ -59,6 +69,15 @@ namespace Server.Test.Database.Test
             Assert.Equal(expected.Price, actual.Price);
             Assert.Equal(expected.Stock, actual.Stock);
             Assert.Equal(expected.Location, actual.Location);
+            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
+            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
+        }
+
+        public static void AssertOrderProperties(OrderHistory expected, OrderHistory actual)
+        {
+            Assert.NotNull(actual);
+            Assert.Equal(expected.OrderId, actual.OrderId);
+            Assert.Equal(expected.CustomerId, actual.CustomerId);
             Assert.Equal(expected.CreatedAt, actual.CreatedAt);
             Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
         }
