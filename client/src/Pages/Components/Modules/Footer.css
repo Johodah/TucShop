@@ -1,16 +1,15 @@
 .footer {
   background-color: white;
   width: 100%;
-  height: 15%;
+  height: 8rem;
   box-sizing: border-box;
-  margin-top: auto;
-  bottom: 0%;
-  position: absolute;
   padding-top: 1.5rem;
-  border-top: 0.125rem solid black;
+  border-top: 0.125rem solid #000000;
+  position: relative;
+  margin-top: auto;
+  bottom: 0;
   overflow-y: hidden;
 }
-
 
 .social-media-logo-container {
   display: flex;
@@ -21,7 +20,6 @@
   left: 10vh;
   top: -1.5rem;
 }
-
 
 .social-media-logo {
   height: 1.5em;
@@ -63,10 +61,10 @@
   justify-content: flex-start;
   width: fit-content;
   position: relative;
-  margin-top: -9.25rem;
+  margin-top: -8.8rem;
   margin-left: 10vh; 
   margin-right: 10vh; 
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .contact-us-text-link,
