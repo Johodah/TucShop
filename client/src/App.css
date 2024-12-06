@@ -7,6 +7,19 @@
   text-align: center;
 }
 
+body, html {
+  height: 100%; 
+  margin: 0;   
+  display: flex;
+  flex-direction: column;
+}
+
+.app-wrapper {
+  min-height: 100%;  
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   background-color: white;
   border: none;
