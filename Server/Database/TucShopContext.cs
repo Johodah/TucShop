@@ -87,7 +87,8 @@ namespace Server.Database
                new Customer
                {
                    CustomerId = 1,
-                   CustomerName = "John Doe",
+                   CustomerFirstName = "John",
+                   CustomerLastName = "Doe",
                    CustomerEmail = "john.doe@example.com",
                    CustomerPassword = "password123",
                    Phone = "1234567890",
@@ -98,7 +99,8 @@ namespace Server.Database
                new Customer
                {
                    CustomerId = 2,
-                   CustomerName = "Jane Smith",
+                   CustomerFirstName = "Jane",
+                   CustomerLastName = "Smith",
                    CustomerEmail = "jane.smith@example.com",
                    CustomerPassword = "password456",
                    Phone = "0987654321",
@@ -109,38 +111,17 @@ namespace Server.Database
 
 
             modelBuilder.Entity<OrderHistory>().HasData(
-                new OrderHistory
-                {
-                    OrderId = 1,
-                    CustomerId = 1,
-                    CreatedAt = new DateOnly(2021, 3, 1),
-                    UpdatedAt = new DateOnly(2021, 3, 1)
-                },
-                new OrderHistory
-                {
-                    OrderId = 2,
-                    CustomerId = 2,
-                    CreatedAt = new DateOnly(2021, 4, 1),
-                    UpdatedAt = new DateOnly(2021, 4, 1)
-                });
+                new OrderHistory { OrderId = 1, CustomerId = 1, CreatedAt = new DateOnly(2021, 3, 1), UpdatedAt = new DateOnly(2021, 3, 1) },
+                new OrderHistory { OrderId = 2, CustomerId = 2, CreatedAt = new DateOnly(2021, 4, 1), UpdatedAt = new DateOnly(2021, 4, 1) },
+                new OrderHistory { OrderId = 3, CustomerId = 1, CreatedAt = new DateOnly(2023, 5, 1), UpdatedAt = new DateOnly(2024, 5, 1) }
+            );
 
             modelBuilder.Entity<OrderDetail>().HasData(
-                new OrderDetail
-                {
-                    OrderDetailId = 1,
-                    OrderId = 1,
-                    ProductId = 1,
-                    Quantity = 1,
-                    TotalPrice = 500,
-                },
-                new OrderDetail
-                {
-                    OrderDetailId = 2,
-                    OrderId = 2,
-                    ProductId = 2,
-                    Quantity = 1,
-                    TotalPrice = 1000,
-                });
+               new OrderDetail { OrderDetailId = 1, OrderId = 1, ProductId = 1, Quantity = 1, TotalPrice = 500 },
+               new OrderDetail { OrderDetailId = 2, OrderId = 2, ProductId = 2, Quantity = 1, TotalPrice = 1000},
+               new OrderDetail { OrderDetailId = 3, OrderId = 2, ProductId = 3, Quantity = 1, TotalPrice = 650},
+               new OrderDetail { OrderDetailId = 4, OrderId = 2, ProductId = 4, Quantity = 1, TotalPrice = 800}
+           );
 
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
@@ -153,26 +134,36 @@ namespace Server.Database
                     UpdatedAt = new DateOnly(2021, 1, 1)
                 });
 
-            // Define primary key for OrderHistory
+            
             modelBuilder.Entity<OrderHistory>()
                 .HasKey(o => o.OrderId);
 
-            //relationships
+            modelBuilder.Entity<OrderDetail>()
+                .HasKey(od => od.OrderDetailId);
+
+
             modelBuilder.Entity<OrderHistory>()
-                .HasOne<Customer>(o => o.Customer)
+                .HasOne(o => o.Customer)
                 .WithMany(c => c.OrderHistories)
                 .HasForeignKey(o => o.CustomerId);
 
-            modelBuilder.Entity<OrderHistory>()
-                .HasOne<Product>(o => o.Product)
-                .WithMany(p => p.OrderHistories)
-                .HasForeignKey(o => o.ProductId);
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.OrderHistory)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(od => od.OrderId);
 
-            //indexes
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Product)
+                .WithMany(p => p.OrderDetails)
+                .HasForeignKey(od => od.ProductId);
+
+
             modelBuilder.Entity<OrderHistory>()
                 .HasIndex(o => o.CustomerId);
-            modelBuilder.Entity<OrderHistory>()
-                .HasIndex(o => o.ProductId);
+            modelBuilder.Entity<OrderDetail>()
+                .HasIndex(od => od.OrderId);
+            modelBuilder.Entity<OrderDetail>()
+                .HasIndex(od => od.ProductId);
         }
     }
 }

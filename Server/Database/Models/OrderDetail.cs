@@ -18,7 +18,7 @@ namespace Server.Database.Models
         [Range(1, int.MaxValue)]
         public int Quantity { get; set; }
 
-        [Range(0, float.MaxValue)]
-        public float TotalPrice { get; set; }
+        [Range(0, double.MaxValue)]
+        public decimal TotalPrice { get; set; }
     }
 }

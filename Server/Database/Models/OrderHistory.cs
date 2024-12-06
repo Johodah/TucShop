@@ -15,6 +15,9 @@ namespace Server.Database.Models
         public DateOnly UpdatedAt { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
+
+        [NotMapped]
+        public decimal TotalPrice => OrderDetails?.Sum(od => od.TotalPrice) ?? 0;
     }
 }
 

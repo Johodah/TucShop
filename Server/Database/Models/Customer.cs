@@ -7,8 +7,12 @@ namespace Server.Database.Models
         public int CustomerId { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string CustomerName { get; set; }
+        [MaxLength(25)]
+        public string CustomerFirstName { get; set; }
+
+        [Required]
+        [MaxLength(25)]
+        public string CustomerLastName { get; set; }
 
         [Required]
         [EmailAddress]

@@ -31,11 +31,11 @@ namespace Server.Test.Database.Test
 
             AddAndSaveEntity(customer);
 
-            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
+            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
             Assert.NotNull(savedCustomer);
             VerifyCustomerData(customer, savedCustomer);
 
-            _output.WriteLine($"Customer added: {savedCustomer.CustomerName}, {savedCustomer.CustomerEmail}");
+            _output.WriteLine($"Customer added: {savedCustomer.CustomerFirstName}, {savedCustomer.CustomerId}");
         }
 
         [Fact]
@@ -44,11 +44,11 @@ namespace Server.Test.Database.Test
             var customer = CreateTestCustomer();
             AddAndSaveEntity(customer);
 
-            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerEmail == customer.CustomerEmail);
+            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
             Assert.NotNull(savedCustomer);
             VerifyCustomerData(customer, savedCustomer);
 
-            _output.WriteLine($"Customer retrieved: {savedCustomer.CustomerName}, {savedCustomer.CustomerEmail}");
+            _output.WriteLine($"Customer retrieved: {savedCustomer.CustomerFirstName}, {savedCustomer.CustomerId}");
         }
 
         [Fact]
@@ -73,14 +73,23 @@ namespace Server.Test.Database.Test
             AddAndSaveEntity(customer);
             AddAndSaveEntity(product);
 
-            var orderHistory = CreateTestOrderHistory(customer.Id, product.ProductId);
+            var orderHistory = CreateTestOrderHistory(customer.CustomerId);
             AddAndSaveEntity(orderHistory);
 
-            var savedOrderHistory = _context.OrderHistories.FirstOrDefault(o => o.OrderId == orderHistory.OrderId);
+            var orderDetail = CreateTestOrderDetail(orderHistory.OrderId, product.ProductId);
+            AddAndSaveEntity(orderDetail);
+
+            var savedOrderHistory = _context.OrderHistories
+                .Include(o => o.OrderDetails)
+                .FirstOrDefault(o => o.OrderId == orderHistory.OrderId);
             Assert.NotNull(savedOrderHistory);
             VerifyOrderHistoryData(orderHistory, savedOrderHistory);
 
-            _output.WriteLine($"OrderHistory added: OrderId={savedOrderHistory.OrderId}, CustomerId={savedOrderHistory.CustomerId}, ProductId={savedOrderHistory.ProductId}");
+            var savedOrderDetail = savedOrderHistory.OrderDetails.FirstOrDefault();
+            Assert.NotNull(savedOrderDetail);
+            VerifyOrderDetailData(orderDetail, savedOrderDetail);
+
+            _output.WriteLine($"OrderHistory added: OrderId={savedOrderHistory.OrderId}, CustomerId={savedOrderHistory.CustomerId}");
         }
 
         [Fact]
@@ -91,7 +100,7 @@ namespace Server.Test.Database.Test
             AddAndSaveEntity(customer);
             AddAndSaveEntity(product);
 
-            var orderHistory = CreateTestOrderHistory(customer.Id, product.ProductId);
+            var orderHistory = CreateTestOrderHistory(customer.CustomerId);
             AddAndSaveEntity(orderHistory);
 
             var savedOrderHistory = _context.OrderHistories
@@ -103,7 +112,7 @@ namespace Server.Test.Database.Test
             VerifyOrderHistoryData(orderHistory, savedOrderHistory);
             VerifyCustomerData(customer, savedOrderHistory.Customer);
 
-            _output.WriteLine($"OrderHistory retrieved with Customer: OrderId={savedOrderHistory.OrderId}, CustomerName={savedOrderHistory.Customer.CustomerName}");
+            _output.WriteLine($"OrderHistory retrieved with Customer: OrderId={savedOrderHistory.OrderId}, CustomerName={savedOrderHistory.Customer.CustomerFirstName}");
         }
 
         private void AddAndSaveEntity<T>(T entity) where T : class
@@ -116,8 +125,8 @@ namespace Server.Test.Database.Test
         {
             return new Customer
             {
-                CustomerName = "Test User",
-                CustomerEmail = "test.user@example.com",
+                CustomerFirstName = "Test",
+                CustomerLastName = "User",
                 CustomerPassword = "testpassword",
                 Phone = "1234567890",
                 Address = "789 Test St",
@@ -133,29 +142,37 @@ namespace Server.Test.Database.Test
                 ProductName = "Test Product",
                 ProductDescription = "Test Description",
                 Price = 100,
-                Stock = 10,
+                Stock = 30,
                 Location = "Test Location",
                 CreatedAt = new DateOnly(2021, 5, 1),
                 UpdatedAt = new DateOnly(2021, 5, 1)
             };
         }
 
-        private OrderHistory CreateTestOrderHistory(int customerId, int productId)
+        private OrderHistory CreateTestOrderHistory(int customerId)
         {
             return new OrderHistory
             {
                 CustomerId = customerId,
-                ProductId = productId,
-                Quantity = 10,
-                TotalPrice = 1500,
                 CreatedAt = new DateOnly(2023, 6, 1),
                 UpdatedAt = new DateOnly(2023, 6, 1)
             };
         }
 
+        private OrderDetail CreateTestOrderDetail(int orderId, int productId)
+        {
+            return new OrderDetail
+            {
+                OrderId = orderId,
+                ProductId = productId,
+                Quantity = 1,
+            };
+        }
+
         private void VerifyCustomerData(Customer expected, Customer actual)
         {
-            Assert.Equal(expected.CustomerName, actual.CustomerName);
+            Assert.Equal(expected.CustomerFirstName, actual.CustomerFirstName);
+            Assert.Equal(expected.CustomerLastName, actual.CustomerLastName);
             Assert.Equal(expected.CustomerEmail, actual.CustomerEmail);
             Assert.Equal(expected.CustomerPassword, actual.CustomerPassword);
             Assert.Equal(expected.Phone, actual.Phone);
@@ -179,11 +196,17 @@ namespace Server.Test.Database.Test
         {
             Assert.Equal(expected.OrderId, actual.OrderId);
             Assert.Equal(expected.CustomerId, actual.CustomerId);
+            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
+            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
+        }
+
+        private void VerifyOrderDetailData(OrderDetail expected, OrderDetail actual)
+        {
+            Assert.Equal(expected.OrderDetailId, actual.OrderDetailId);
+            Assert.Equal(expected.OrderId, actual.OrderId);
             Assert.Equal(expected.ProductId, actual.ProductId);
             Assert.Equal(expected.Quantity, actual.Quantity);
             Assert.Equal(expected.TotalPrice, actual.TotalPrice);
-            Assert.Equal(expected.CreatedAt, actual.CreatedAt);
-            Assert.Equal(expected.UpdatedAt, actual.UpdatedAt);
         }
     }
 }
