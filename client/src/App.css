@@ -65,4 +65,51 @@ button {
   font-weight: bold ;
 }
 
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.courseContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(219, 219, 219);
+  border: 2px, solid, black;
+  border-radius: 10px;
+  margin: 2rem;
+  max-width: 100%;
+  padding: 4rem;
+}
+.courseContainer > p {
+  text-wrap: wrap;
+  width: 10rem;
+  font-size: large;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.searchBar > input {
+  width: 50rem;
+  height: 3rem;
+  font-size: large;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+.searchButton {
+  background-color: rgb(135, 187, 247);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+}
+
 

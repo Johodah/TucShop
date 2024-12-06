@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "productId": 1,
+      "name": "Programming",
+      "description": "Learn programming from scratch, covering various languages such as Python, JavaScript, and Java. Understand algorithms, data structures, and software development best practices.",
+      "shortDescription": "Learn programming from scratch.",
+      "price": 1000,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Programming", "IT", "Technology", "Education"]
+    },
+    {
+      "productId": 2,
+      "name": "Mathematics",
+      "description": "Master the fundamentals of mathematics including algebra, calculus, and geometry. This course is designed to build a strong foundation for advanced mathematical studies.",
+      "shortDescription": "Master the fundamentals of mathematics.",
+      "price": 500,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Mathematics", "Math", "Science", "Education"]
+    },
+    {
+      "productId": 3,
+      "name": "Physics",
+      "description": "Explore the principles of physics, from classical mechanics to modern quantum physics. Learn about the laws that govern the universe and how to apply them in real-world scenarios.",
+      "shortDescription": "Explore the principles of physics.",
+      "price": 800,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Physics", "Natural Science", "Education"]
+    },
+    {
+      "productId": 4,
+      "name": "Chemistry",
+      "description": "Dive into the world of chemistry, understanding chemical reactions, molecular structures, and the periodic table. This course covers both theoretical and practical aspects of chemistry.",
+      "shortDescription": "Dive into the world of chemistry.",
+      "price": 700,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Chemistry", "Natural Science", "Education"]
+    },
+    {
+      "productId": 5,
+      "name": "Biology",
+      "description": "Learn about the living world, from cellular biology to ecosystems. This course covers genetics, evolution, and the diversity of life on Earth.",
+      "shortDescription": "Learn about the living world.",
+      "price": 600,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Biology", "Natural Science", "Education"]
+    },
+    {
+      "productId": 6,
+      "name": "English",
+      "description": "Improve your English language skills, including grammar, vocabulary, and writing. This course is designed for both beginners and advanced learners.",
+      "shortDescription": "Improve your English language skills.",
+      "price": 400,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "English", "Language", "Education"]
+    },
+    {
+      "productId": 7,
+      "name": "Swedish",
+      "description": "Learn Swedish, focusing on speaking, listening, reading, and writing skills. This course is suitable for beginners and those looking to improve their proficiency.",
+      "shortDescription": "Learn Swedish language skills.",
+      "price": 300,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Swedish", "Language", "Education"]
+    },
+    {
+      "productId": 8,
+      "name": "History",
+      "description": "Study the major events and figures that have shaped human history. This course covers ancient civilizations, the Middle Ages, and modern history.",
+      "shortDescription": "Study major historical events.",
+      "price": 200,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "History", "Social Studies", "Education"]
+    },
+    {
+      "productId": 9,
+      "name": "Social Studies",
+      "description": "Understand the social, political, and economic structures of societies. This course covers sociology, anthropology, and political science.",
+      "shortDescription": "Understand societal structures.",
+      "price": 100,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Social Studies", "History", "Education"]
+    },
+    {
+      "productId": 10,
+      "name": "Geography",
+      "description": "Explore the physical and human geography of the world. Learn about different landscapes, climates, and cultures, and how they interact.",
+      "shortDescription": "Explore physical and human geography.",
+      "price": 50,
+      "image": "https://via.placeholder.com/150",
+      "category": ["Course", "Geography", "Social Studies", "Education"]
+    }
+  ]
+}
