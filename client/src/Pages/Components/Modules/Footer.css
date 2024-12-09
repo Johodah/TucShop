@@ -23,26 +23,14 @@
 
 .social-media-logo {
   height: 1.5em;
-
-}
-
-.page-logo-container {
-  display: flex;
-  justify-content: left;
-  gap: 1em;
-  width: fit-content;
-  position: relative;
-  left: 10vh;
-  top: -0.5rem;
 }
 
 .page-logo {
   width:10rem;
   padding-bottom: 1rem;
-}
-
-.page-Logo:hover {
-  cursor: pointer;
+  left: 5vh;
+  position: relative;
+  margin-top: -2rem;
 }
 
 .links-to-services-text-container {
