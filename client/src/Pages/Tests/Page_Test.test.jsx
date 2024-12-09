@@ -43,10 +43,4 @@ describe("Routing Tests", () => {
     render(<Product />);
     expect(screen.getByText("Product")).toBeInTheDocument();
   });
-
-  // test("should render the Checkout page when cart button clicked", () => {
-  //   render(<Header />);
-  //   fireEvent.click(screen.getByText("Cart"));
-  //   expect(window.location.pathname).toBe("/checkout");
-  // });
 });

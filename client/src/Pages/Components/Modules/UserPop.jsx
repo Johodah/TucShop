@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import { useState, React } from "react";
 
 function UserPop() {
   const [show, setShow] = useState(false);
@@ -18,20 +17,26 @@ function UserPop() {
           data-testid="user-image"
         />
       </button>
-      {show && (
-        <div className="toast ">
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-          />
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <button className="login">Log in</button>
-          <button className="signup">Sign up</button>
-        </div>
-      )}
+      {showToast(show)}
     </div>
+  );
+}
+
+function showToast(show) {
+  return (
+    show && (
+      <div className="toast ">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+        />
+        <input type="email" name="email" id="email" placeholder="Email" />
+        <button className="login">Log in</button>
+        <button className="signup">Sign up</button>
+      </div>
+    )
   );
 }
 
