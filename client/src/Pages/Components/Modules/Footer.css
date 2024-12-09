@@ -23,7 +23,6 @@
 
 .social-media-logo {
   height: 1.5em;
-
 }
 
 .page-logo {
@@ -31,10 +30,6 @@
   padding-bottom: 1rem;
   padding-left: 2.5rem;
   margin-top: -2rem;
-}
-
-.page-Logo:hover {
-  cursor: pointer;
 }
 
 .links-to-services-text-container {
