@@ -26,19 +26,11 @@
 
 }
 
-.page-logo-container {
-  display: flex;
-  justify-content: left;
-  gap: 1em;
-  width: fit-content;
-  position: relative;
-  left: 10vh;
-  top: -0.5rem;
-}
-
 .page-logo {
   width:10rem;
   padding-bottom: 1rem;
+  padding-left: 2.5rem;
+  margin-top: -2rem;
 }
 
 .page-Logo:hover {
