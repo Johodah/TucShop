@@ -10,7 +10,7 @@ import { ProductProvider } from "./Pages/Components/ProductContext";
 
 function App() {
   return (
-    <>
+    <div className="pageContent">
       <Router>
         <Header />
         <Routes>
