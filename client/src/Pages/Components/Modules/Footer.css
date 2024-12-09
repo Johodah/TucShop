@@ -28,7 +28,8 @@
 .page-logo {
   width:10rem;
   padding-bottom: 1rem;
-  padding-left: 2.5rem;
+  left: 5vh;
+  position: relative;
   margin-top: -2rem;
 }
 
