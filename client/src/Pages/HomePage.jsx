@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "../Pages/Components/Modules/SearchBar";
 import ProductCard from "../Pages/Components/ProductCard";
+import NotAvailableProduct from "../Pages/Components/NotAvailableProduct";
 import { useProductContext } from "./Components/ProductContext";
 
 function HomePage() {
@@ -11,13 +12,14 @@ function HomePage() {
     <div>
       <h1>Welcome to CUT👑!</h1>
       <p>
-        Check the different courses bellow🤩 <br /> or <br /> search you
+        Check the different courses below🤩 <br /> or <br /> search your
         favourite course in the searchbar🔎!
       </p>
       <Search />
-      {/* <ProductCard /> */}
       {!results || results.length === 0 ? (
-        <ProductCard />
+       <ProductCard />
+        //  stock === 0 || stock === null ?
+        //   <ProductCard /> : <NotAvailableProduct />} />
       ) : (
         <div className="mainContent">
           {results.map((item) => {
