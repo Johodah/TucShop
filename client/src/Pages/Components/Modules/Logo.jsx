@@ -7,7 +7,7 @@ function Logo() {
   };
   return (
     <button onClick={handleclick}>
-      <img src={logo} alt="Home" width={250} data-testid="logo-image" />
+      <img src={logo} alt="Home" width={200} data-testid="logo-image" />
     </button>
   );
 }
