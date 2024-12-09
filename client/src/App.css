@@ -6,6 +6,20 @@
   margin: 0 auto;
   text-align: center;
 }
+
+body, html {
+  height: 100%; 
+  margin: 0;   
+  display: flex;
+  flex-direction: column;
+}
+
+.app-wrapper {
+  min-height: 100%;  
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   background-color: white;
   border: none;
@@ -19,6 +33,7 @@ button {
   align-items: center;
   margin-bottom: 2rem;
   max-width: 100%;
+  border-bottom: 0.125rem solid black;
 }
 
 .user-cart{
@@ -28,7 +43,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: -0.5rem;
   max-width: 100%;
 }
 

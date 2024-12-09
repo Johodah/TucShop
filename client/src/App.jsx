@@ -10,7 +10,8 @@ import { ProductProvider } from "./Pages/Components/ProductContext";
 
 function App() {
   return (
-    <div className="pageContent">
+    <>
+    <div className="app-wrapper">
       <Router>
         <Header />
         <Routes>
@@ -27,7 +28,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    </div>
+      </div>
+    </>
   );
 }
 
