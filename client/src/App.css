@@ -14,7 +14,7 @@ body, html {
   flex-direction: column;
 }
 
-.app-wrapper {
+.PageContent {
   min-height: 100%;  
   display: flex;
   flex-direction: column;
