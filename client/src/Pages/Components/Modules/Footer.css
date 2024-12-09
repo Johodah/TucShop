@@ -3,6 +3,8 @@
   width: 100%;
   height: 8rem;
   box-sizing: border-box;
+  margin-top: auto;
+  bottom: 0%;
   padding-top: 1.5rem;
   border-top: 0.125rem solid #000000;
   position: relative;
