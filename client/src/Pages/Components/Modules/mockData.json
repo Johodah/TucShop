@@ -6,7 +6,7 @@
       "description": "Learn programming from scratch, covering various languages such as Python, JavaScript, and Java. Understand algorithms, data structures, and software development best practices.",
       "shortDescription": "Learn programming from scratch.",
       "price": 1000,
-      "stock": 30,
+      "stock": 0,
       "image": "https://via.placeholder.com/150",
       "category": ["Course", "Programming", "IT", "Technology", "Education"]
     },
@@ -26,7 +26,7 @@
       "description": "Explore the principles of physics, from classical mechanics to modern quantum physics. Learn about the laws that govern the universe and how to apply them in real-world scenarios.",
       "shortDescription": "Explore the principles of physics.",
       "price": 800,
-      "stock": 30,
+      "stock": 23,
       "image": "https://via.placeholder.com/150",
       "category": ["Course", "Physics", "Natural Science", "Education"]
     },

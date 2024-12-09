@@ -137,3 +137,6 @@ button {
   font-weight: bold;
 }
 
+.outOfStock {
+  color: red;
+}
