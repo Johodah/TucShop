@@ -6,6 +6,7 @@ import { useProductContext } from "./Components/ProductContext";
 
 function HomePage() {
   const { results } = useProductContext();
+
   return (
     <div>
       <h1>Welcome to CUT👑!</h1>
@@ -20,13 +21,16 @@ function HomePage() {
         <div className="mainContent">
           {results.map((item) => {
             return (
-              <div key={item.productId} className="courseContainer">
-                <h3>{item.name}</h3>
-                <img src={item.image} alt={"course"} />
-                <p>{item.shortDescription}</p>
-                <p>{item.price} kr</p>
-                <AddToCart item={item} />
-              </div>
+              <button onClick={() => handleClick(item)} key={item.productId}>
+                <div className="courseContainer">
+                  <h3>{item.name}</h3>
+                  <img src={item.image} alt={"course"} />
+                  <p>{item.shortDescription}</p>
+                  <p>{item.stock} spot(s)</p>
+                  <p>{item.price} kr</p>
+                  <AddToCart stock={item.stock} productId={item.productId} />
+                </div>
+              </button>
             );
           })}
         </div>

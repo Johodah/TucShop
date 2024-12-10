@@ -1,13 +1,8 @@
 import React from "react";
 import { useProductContext } from "../../ProductContext";
-import mock from "../mockData.json";
 
-function AddToCartButton(item) {
-  const { clickedButtons, handleButtonClick, setCoursesCount } =
-    useProductContext();
-
-  const courses = item.stock;
-  const productId = item.productId;
+function AddToCartButton({ stock, productId }) {
+  const { clickedButtons, handleButtonClick } = useProductContext();
 
   const handleClick = () => {
     handleButtonClick(productId);
@@ -15,7 +10,7 @@ function AddToCartButton(item) {
 
   return (
     <>
-      {courses > 0 ? (
+      {stock > 0 ? (
         <button className="buyButton" onClick={handleClick}>
           {clickedButtons[productId] ? "Added" : "Add to cart"}
         </button>
