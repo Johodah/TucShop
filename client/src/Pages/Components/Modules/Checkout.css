@@ -1,45 +1,92 @@
-.checkout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin-bottom: 2rem; 
-  }
-  
-  .cartItems {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 40%;
-    padding: 1.25rem;
-    background-color: #fff;
-    border-radius: 0.9375rem; 
-  }
-  
-  .cart-item {
-    border: 0.125rem solid black; 
-    border-radius: 0.9375rem;
-    background-color: gray;
-    margin-bottom: 2rem; 
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.625rem;
-    text-align: center;
-  }
-  
-  .cart-item-name {
-    font-size: 1rem;
-    margin-bottom: 0.625rem; 
-  }
-  
-  .purchaseButton {
-    margin-top: 2rem; 
-    text-align: center;
-    width: 10rem; 
-    align-self: center;
-    border: 0.125rem solid black;
-    padding: 0.3125rem; 
-  }
-  
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.125rem, solid, black;
+  border-radius: 0.625rem;
+  background-color: rgb(219, 219, 219);
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart-item-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: -2rem;
+}
+
+.cart-item-name {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.cart-item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-item-image {
+  width: 150px;
+  height: auto;
+  margin-right: 2rem;
+  border-radius: 0.3125rem;
+}
+
+.cart-item-price {
+  font-size: 1.25rem;
+  color: #333;
+  text-align: left;
+  flex: 1;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  margin-left: 9.6rem;
+}
+
+.cart-item-trash-can {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-bottom: 2.5rem;
+  transition: none;
+}
+
+.cart-item-trash-can:active {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-bottom: 2.5rem;
+  border: 0.125rem solid black;
+  border-radius: 0.225rem;
+  padding: 0.625rem;
+  margin-right: -0.750rem;
+  overflow: visible;
+}
+
+.purchase-button {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 12rem;
+  align-self: center;
+  border: 0.125rem solid black;
+  padding: 0.625rem;
+}
+
+.purchase-button:hover {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 12rem;
+  align-self: center;
+  border: 0.125rem solid black;
+  padding: 0.625rem;
+}
