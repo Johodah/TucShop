@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useProductContext } from "../../ProductContext";
 
 function AddToCartButton({ stock, productId }) {
-  const { clickedButtons, handleButtonClick } = useProductContext();
+  const { clickedButtons, handleButtonClick, setCoursesCount, coursesCount } =
+    useProductContext();
+
+  useEffect(() => {
+    setCoursesCount(coursesCount);
+  }, [coursesCount]);
 
   const handleClick = () => {
     handleButtonClick(productId);
+    setCoursesCount((prevState) => prevState + 1);
   };
 
   return (

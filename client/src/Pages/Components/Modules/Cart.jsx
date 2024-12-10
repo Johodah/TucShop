@@ -1,7 +1,9 @@
 import React from "react";
+import { useProductContext } from "../ProductContext";
 
 function Cart() {
-  const [count, setCount] = React.useState(2);
+  const { coursesCount } = useProductContext();
+  console.log("in the cart " + coursesCount);
 
   const handleClick = () => {
     window.location.pathname = "/checkout";
@@ -16,7 +18,9 @@ function Cart() {
           width={30}
         />
       </button>
-      {count > 0 ? <div className="cart-count">{count}</div> : null}
+      {coursesCount > 0 ? (
+        <div className="cart-count">{coursesCount}</div>
+      ) : null}
     </>
   );
 }

@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 function Product() {
   const location = useLocation();
   const item = location.state.product;
-  console.log(item);
 
   return (
     <div className="courseContainer">
