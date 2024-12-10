@@ -47,6 +47,7 @@ const Checkout = () => {
           item={item}
           clicked={clicked}
           onClick={handleClick}
+          stock={item.stock}
         />
       ))}
       <h2>Total: {totalPrice} kr</h2>
