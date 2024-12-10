@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using Xunit;
-using Server.Database;
+﻿using Server.Database;
 using Server.Database.Models;
 using Xunit.Abstractions;
 using Microsoft.EntityFrameworkCore;
