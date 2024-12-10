@@ -5,16 +5,26 @@ import trashCan from './Components/Modules/Images/trash-can.png';
 
 const Checkout = () => {
   const [cartItems, setCartItems] = useState(mockData.data);
-
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(null); 
+  const [showConfirm, setShowConfirm] = useState(false); 
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
   const handleClick = (productId) => {
-    setClicked(!clicked);
+    setClicked(productId); 
+    setShowConfirm(true); 
+  };
 
-    const updatedCartItems = cartItems.filter(item => item.productId !== productId);
-    setCartItems(updatedCartItems); 
+  const handleConfirmDelete = () => {
+    const updatedCartItems = cartItems.filter(item => item.productId !== clicked);
+    setCartItems(updatedCartItems);
+    setShowConfirm(false); 
+    setClicked(null); 
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirm(false);
+    setClicked(null);
   };
 
   return (
@@ -29,7 +39,7 @@ const Checkout = () => {
               <img 
                 src={trashCan} 
                 alt="Remove item" 
-                className={`cart-item-trash-can ${clicked ? 'clicked' : ''}`}  
+                className={`cart-item-trash-can ${clicked === item.productId ? 'clicked' : ''}`}  
                 onClick={() => handleClick(item.productId)} 
               />
             </div>
@@ -38,6 +48,17 @@ const Checkout = () => {
       ))}
       <h2>Total: {totalPrice} kr</h2>
       <button className="purchase-button">Purchase</button>
+      {showConfirm && (
+        <div className="confirm-popup">
+          <p>Are you sure you want to remove this course from your cart?</p>
+          <div className="confirm-popup-remove">
+          <button onClick={handleConfirmDelete}>Yes, Remove</button>
+          </div>
+          <div className="confirm-popup-cancel">
+          <button onClick={handleCancelDelete}>Cancel</button>
+        </div>
+        </div>
+      )}
     </div>
   );
 };

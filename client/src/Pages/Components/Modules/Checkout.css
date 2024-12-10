@@ -90,3 +90,45 @@
   border: 0.125rem solid black;
   padding: 0.625rem;
 }
+
+.confirm-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+.confirm-popup-remove button {
+  margin: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  background-color: green;
+  color: white;
+  border: 0.125rem solid black; 
+  cursor: pointer;
+  outline: none; 
+}
+
+.confirm-popup-cancel button {
+  margin: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  background-color: red;
+  color: white;
+  border: 0.125rem solid black; 
+  cursor: pointer;
+  outline: none; 
+}
+
+.confirm-popup-cancel button:focus, 
+.confirm-popup-cancel button:active,
+.confirm-popup-remove button:focus, 
+.confirm-popup-remove button:active {
+  outline: none; 
+  border: 0.125rem solid black; 
+}
