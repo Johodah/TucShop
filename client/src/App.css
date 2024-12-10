@@ -7,15 +7,16 @@
   text-align: center;
 }
 
-body, html {
-  height: 100%; 
-  margin: 0;   
+body,
+html {
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
 }
 
 .app-wrapper {
-  min-height: 100%;  
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -36,7 +37,7 @@ button {
   border-bottom: 0.125rem solid black;
 }
 
-.user-cart{
+.user-cart {
   position: relative;
   right: 100px;
   display: flex;
@@ -48,8 +49,8 @@ button {
 }
 
 .toast {
-  position: absolute ;
-  top: 50px;  
+  position: absolute;
+  top: 50px;
   right: 90px;
   background-color: cadetblue;
   border-radius: 10%;
@@ -58,7 +59,7 @@ button {
 }
 
 .cart-count {
-  position:absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
   background-color: red;
@@ -69,7 +70,8 @@ button {
   font-weight: bold;
 }
 
-.login, .signup {
+.login,
+.signup {
   background-color: rgb(236, 236, 236);
   border: none;
   cursor: pointer;
@@ -77,7 +79,7 @@ button {
   margin: 0.5rem;
   width: 10rem;
   font-size: small;
-  font-weight: bold ;
+  font-weight: bold;
 }
 
 .mainContent {
@@ -88,7 +90,7 @@ button {
   margin-bottom: 2rem;
 }
 
-.courseContainer{
+.courseContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -137,3 +139,6 @@ button {
   font-weight: bold;
 }
 
+.outOfStock {
+  color: red;
+}

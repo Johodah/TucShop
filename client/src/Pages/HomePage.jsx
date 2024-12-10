@@ -1,13 +1,12 @@
 import React from "react";
 import Search from "../Pages/Components/Modules/SearchBar";
 import ProductCard from "../Pages/Components/ProductCard";
-import NotAvailableProduct from "../Pages/Components/NotAvailableProduct";
+import AddToCart from "../Pages/Components/Modules/AddToCartButton/AddtoCartButton";
 import { useProductContext } from "./Components/ProductContext";
 
 function HomePage() {
-  const { results, tag } = useProductContext();
-  console.log("This is the Tag " + tag);
-  console.log("tHIS IS THE RESULTS " + results);
+  const { results } = useProductContext();
+
   return (
     <div>
       <h1>Welcome to CUT👑!</h1>
@@ -17,20 +16,21 @@ function HomePage() {
       </p>
       <Search />
       {!results || results.length === 0 ? (
-       <ProductCard />
-        //  stock === 0 || stock === null ?
-        //   <ProductCard /> : <NotAvailableProduct />} />
+        <ProductCard />
       ) : (
         <div className="mainContent">
           {results.map((item) => {
             return (
-              <div key={item.productId} className="courseContainer">
-                <h3>{item.name}</h3>
-                <img src={item.image} alt={"course"} />
-                <p>{item.shortDescription}</p>
-                <p>{item.price} kr</p>
-                <button className="buyButton">Add to cart</button>
-              </div>
+              <button onClick={() => handleClick(item)} key={item.productId}>
+                <div className="courseContainer">
+                  <h3>{item.name}</h3>
+                  <img src={item.image} alt={"course"} />
+                  <p>{item.shortDescription}</p>
+                  <p>{item.stock} spot(s)</p>
+                  <p>{item.price} kr</p>
+                  <AddToCart stock={item.stock} productId={item.productId} />
+                </div>
+              </button>
             );
           })}
         </div>
