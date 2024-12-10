@@ -8,9 +8,8 @@ function Product() {
 
   return (
     <div className="courseContainer">
-      <h1>{item.name}</h1>
-      <img src={item.image} alt={"course"} />
-      <p>{item.description}</p>
+      <h1>{item.productName}</h1>
+      <p>{item.productDescription}</p>
       <p>{item.stock} spot(s)</p>
       <p>{item.price} kr</p>
       <AddToCartButton stock={item.stock} productId={item.productId} />
