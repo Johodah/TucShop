@@ -35,7 +35,7 @@
 }
 
 .cart-item-image {
-  width: 150px;
+  width: 9.375;
   height: auto;
   margin-right: 2rem;
   border-radius: 0.3125rem;
@@ -115,7 +115,6 @@
   font-size: 2rem;
 }
 
-
 .confirm-popup-remove button {
   margin: 0.3125rem;
   padding: 0.625rem 1.25rem;
@@ -142,8 +141,4 @@
 .confirm-popup-remove button:active {
   outline: none;
   border: 0.125rem solid black;
-}
-
-.cart-item-stock-price-container {
-
 }
