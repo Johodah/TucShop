@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import mockData from "../Components/Modules/mockData.json";
 import AddToCart from "../Components/Modules/AddToCartButton/AddtoCartButton";
 import { useNavigate } from "react-router-dom";
 
 function ProductCard() {
   const [incomingData, setIncomingData] = React.useState([]);
+  const [error, setError] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch("http://localhost:7181/api/Products")
-      .then((res) => res.json())
-      .then((data) => setIncomingData(data))
-      .catch((error) => console.log(error));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:7181/api/Products");
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setIncomingData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchData();
   }, []);
-  console.log(incomingData);
 
-  // const incomingData = mockData;
   const navigate = useNavigate();
   const handleClick = (item) => {
     navigate("/product", { state: { product: item } });
@@ -22,6 +32,7 @@ function ProductCard() {
 
   return (
     <div className="mainContent">
+      {error && <p className="error">{error}</p>}
       {incomingData.length > 0 &&
         incomingData.map((item) => {
           return (
