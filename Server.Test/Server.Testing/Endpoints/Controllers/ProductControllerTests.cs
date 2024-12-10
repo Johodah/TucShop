@@ -16,7 +16,6 @@ namespace Server.Test.Server.Testing.Endpoints.Controllers
         private readonly HttpClient _client;
         private readonly TestServer _server;
 
-        public ProductControllerTests()
-        {
+        
     }
 }
