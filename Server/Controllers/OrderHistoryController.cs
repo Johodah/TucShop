@@ -26,12 +26,10 @@ namespace Server.Controllers
         public async Task<ActionResult<OrderHistory>> GetOrderHistory(int id)
         {
             var orderHistory = await _context.OrderHistories.FindAsync(id);
-
             if (orderHistory == null)
             {
                 return NotFound();
             }
-
             return orderHistory;
         }
 
@@ -40,7 +38,6 @@ namespace Server.Controllers
         {
             _context.OrderHistories.Add(orderHistory);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetOrderHistory), new { id = orderHistory.OrderId }, orderHistory);
         }
 
@@ -54,7 +51,6 @@ namespace Server.Controllers
 
             _context.Entry(orderHistory).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -69,7 +65,6 @@ namespace Server.Controllers
 
             _context.OrderHistories.Remove(orderHistory);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

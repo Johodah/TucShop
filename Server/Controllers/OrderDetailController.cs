@@ -26,12 +26,10 @@ namespace Server.Controllers
         public async Task<ActionResult<OrderDetail>> GetOrderDetail(int id)
         {
             var orderDetail = await _context.OrderDetails.FindAsync(id);
-
             if (orderDetail == null)
             {
                 return NotFound();
             }
-
             return orderDetail;
         }
 
@@ -40,7 +38,6 @@ namespace Server.Controllers
         {
             _context.OrderDetails.Add(orderDetail);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetOrderDetail), new { id = orderDetail.OrderDetailId }, orderDetail);
         }
 
@@ -54,7 +51,6 @@ namespace Server.Controllers
 
             _context.Entry(orderDetail).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -69,7 +65,6 @@ namespace Server.Controllers
 
             _context.OrderDetails.Remove(orderDetail);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

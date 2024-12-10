@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Server.Database;
 using Server.Database.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Server.Controllers
@@ -29,12 +26,10 @@ namespace Server.Controllers
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             var customer = await _context.Customers.FindAsync(id);
-
             if (customer == null)
             {
                 return NotFound();
             }
-
             return customer;
         }
 
@@ -43,7 +38,6 @@ namespace Server.Controllers
         {
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetCustomer), new { id = customer.CustomerId }, customer);
         }
 
@@ -57,7 +51,6 @@ namespace Server.Controllers
 
             _context.Entry(customer).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -72,7 +65,6 @@ namespace Server.Controllers
 
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

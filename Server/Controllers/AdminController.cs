@@ -26,12 +26,10 @@ namespace Server.Controllers
         public async Task<ActionResult<Admin>> GetAdmin(int id)
         {
             var admin = await _context.Admins.FindAsync(id);
-
             if (admin == null)
             {
                 return NotFound();
             }
-
             return admin;
         }
 
@@ -40,7 +38,6 @@ namespace Server.Controllers
         {
             _context.Admins.Add(admin);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetAdmin), new { id = admin.AdminId }, admin);
         }
 
@@ -54,7 +51,6 @@ namespace Server.Controllers
 
             _context.Entry(admin).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -69,7 +65,6 @@ namespace Server.Controllers
 
             _context.Admins.Remove(admin);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }

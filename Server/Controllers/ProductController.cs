@@ -26,12 +26,10 @@ namespace Server.Controllers
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
-
             if (product == null)
             {
                 return NotFound();
             }
-
             return product;
         }
 
@@ -40,7 +38,6 @@ namespace Server.Controllers
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, product);
         }
 
@@ -54,7 +51,6 @@ namespace Server.Controllers
 
             _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 
@@ -69,7 +65,6 @@ namespace Server.Controllers
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
     }
