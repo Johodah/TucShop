@@ -2,6 +2,7 @@
 using Server.Database;
 using Server.Database.Models;
 using Microsoft.EntityFrameworkCore;
+using Server.Database.Dto;
 
 namespace Server.Controllers
 {
@@ -34,20 +35,35 @@ namespace Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Admin>> PostAdmin(Admin admin)
+        public async Task<ActionResult<Admin>> PostAdmin(AdminDTO adminDto)
         {
+            var admin = new Admin
+            {
+                AdminName = adminDto.AdminName,
+                AdminEmail = adminDto.AdminEmail,
+                AdminPassword = adminDto.AdminPassword,
+                CreatedAt = DateOnly.FromDateTime(DateTime.Now),
+                UpdatedAt = DateOnly.FromDateTime(DateTime.Now)
+            };
+
             _context.Admins.Add(admin);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetAdmin), new { id = admin.AdminId }, admin);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdmin(int id, Admin admin)
+        public async Task<IActionResult> PutAdmin(int id, AdminDTO adminDto)
         {
-            if (id != admin.AdminId)
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
+            admin.AdminName = adminDto.AdminName;
+            admin.AdminEmail = adminDto.AdminEmail;
+            admin.AdminPassword = adminDto.AdminPassword;
+            admin.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
 
             _context.Entry(admin).State = EntityState.Modified;
             await _context.SaveChangesAsync();
