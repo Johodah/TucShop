@@ -1,13 +1,15 @@
 import React from 'react';
 import './Modules/Footer.css';
 import SocialMediaLinks from './Modules/SocialMediaLinks';
-import PageLogoLink from './Modules/PageLogoLink'; 
+import Logo from "./Modules/Logo";
 import LinkToServicesFooter from './Modules/LinkToServicesFooter';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <PageLogoLink />
+      <div className="page-logo">
+      <Logo />
+      </div>
       <SocialMediaLinks />
       <LinkToServicesFooter />
     </footer>
