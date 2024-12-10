@@ -10,6 +10,9 @@ const Checkout = () => {
   const [clicked, setClicked] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [paymentDetails, setPaymentDetails] = useState({ cardNumber: '', expDate: '', cvv: '' });
+  const [showPayButton, setShowPayButton] = useState(true);
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
@@ -30,13 +33,38 @@ const Checkout = () => {
     setClicked(null);
   };
 
+  const handlePay = () => {
+    setShowPaymentForm(true);
+    setShowPayButton(false);
+  };
+
   const handlePurchase = () => {
-    setCartItems([]);
-    setPurchaseCompleted(true);
+    if (paymentDetails.cardNumber && paymentDetails.expDate && paymentDetails.cvv) {
+      setCartItems([]);
+      setPurchaseCompleted(true);
+      setShowPaymentForm(false);
+
+      setTimeout(() => {
+        setPurchaseCompleted(false);
+        setShowPayButton(true);
+        setShowPaymentForm(false);
+        setCartItems(mockData.data);
+      }, 2000);
+    } else {
+      alert("Please fill out all payment details.");
+    }
   };
 
   const handleClosePopup = () => {
     setPurchaseCompleted(false);
+  };
+
+  const handlePaymentChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentDetails(prevDetails => ({
+      ...prevDetails,
+      [name]: value
+    }));
   };
 
   return (
@@ -50,8 +78,52 @@ const Checkout = () => {
           stock={item.stock}
         />
       ))}
-      <h2>Total: {totalPrice} kr</h2>
-      <button onClick={handlePurchase} className="purchase-button">Purchase</button>
+      {!purchaseCompleted && <h2>Total: {totalPrice} kr</h2>}
+      {showPayButton && (
+        <button onClick={handlePay} className="pay-button">Pay</button>
+      )}
+      {showPaymentForm && (
+        <div className="payment-form">
+          <h3>Enter Payment Information</h3>
+          <div className="payment-row">
+            <input
+              type="text"
+              name="accountHolderName"
+              placeholder="Account Holder Name"
+              value={paymentDetails.accountHolderName}
+              onChange={handlePaymentChange}
+              required
+            />
+            <input
+              type="text"
+              name="cardNumber"
+              placeholder="Card Number"
+              value={paymentDetails.cardNumber}
+              onChange={handlePaymentChange}
+              required
+            />
+          </div>
+          <div className="payment-row">
+            <input
+              type="text"
+              name="expDate"
+              placeholder="Expiration Date"
+              value={paymentDetails.expDate}
+              onChange={handlePaymentChange}
+              required
+            />
+            <input
+              type="text"
+              name="cvv"
+              placeholder="CVV"
+              value={paymentDetails.cvv}
+              onChange={handlePaymentChange}
+              required
+            />
+          </div>
+          <button onClick={handlePurchase} className="purchase-button">Complete purchase</button>
+        </div>
+      )}
 
       {showConfirm && (
         <ConfirmPopup
@@ -59,6 +131,7 @@ const Checkout = () => {
           onCancel={handleCancelDelete}
         />
       )}
+
       {purchaseCompleted && (
         <PurchasePopup
           message="Thank you for your purchase!"
