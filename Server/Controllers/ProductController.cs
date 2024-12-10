@@ -2,6 +2,7 @@
 using Server.Database;
 using Server.Database.Models;
 using Microsoft.EntityFrameworkCore;
+using Server.Database.Dto;
 
 namespace Server.Controllers
 {
@@ -34,20 +35,38 @@ namespace Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> PostProduct(ProductDTO productDto)
         {
+            var product = new Product
+            {
+                ProductName = productDto.ProductName,
+                ProductDescription = productDto.ProductDescription,
+                Price = productDto.Price,
+                Stock = 30,
+                Location = productDto.Location,
+                CreatedAt = DateOnly.FromDateTime(DateTime.Now),
+                UpdatedAt = DateOnly.FromDateTime(DateTime.Now)
+            };
+
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, product);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, ProductDTO productDto)
         {
-            if (id != product.ProductId)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
+            product.ProductName = productDto.ProductName;
+            product.ProductDescription = productDto.ProductDescription;
+            product.Price = productDto.Price;
+            product.Location = productDto.Location;
+            product.UpdatedAt = DateOnly.FromDateTime(DateTime.Now);
 
             _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
