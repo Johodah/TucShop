@@ -50,8 +50,8 @@ button {
 
 .toast {
   position: absolute;
-  top: 50px;
-  right: 90px;
+  top: 3.125rem;
+  right: 5.625rem;
   background-color: cadetblue;
   border-radius: 10%;
   align-items: center;
@@ -60,8 +60,8 @@ button {
 
 .cart-count {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  right: 0.625rem;
   background-color: red;
   color: white;
   border-radius: 50%;
@@ -96,8 +96,8 @@ button {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(219, 219, 219);
-  border: 2px, solid, black;
-  border-radius: 10px;
+  border: 0.125rem, solid, black;
+  border-radius: 0.625rem;
   margin: 2rem;
   width: 13rem;
   height: 20rem;
@@ -110,8 +110,8 @@ button {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(219, 219, 219);
-  border: 2px, solid, black;
-  border-radius: 10px;
+  border: 0.125rem, solid, black;
+  border-radius: 0.625rem;
   margin-left: 2rem;
   margin-right: 2rem;
   margin-top: 1rem;
@@ -134,7 +134,7 @@ button {
   font-size: large;
   padding: 0.5rem;
   margin: 1rem;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 }
 
 .search-button {
