@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../Pages/Components/Modules/SearchBar";
 import ProductCard from "../Pages/Components/ProductCard";
-import AddToCart from "../Pages/Components/Modules/AddToCartButton/AddtoCartButton";
+import AddToCart from "../Pages/Components/Modules/AddtoCartButton";
 import { useProductContext } from "./Components/ProductContext";
 import { useNavigate } from "react-router-dom";
 

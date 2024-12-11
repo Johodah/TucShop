@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import mock from "../Components/Modules/mockData.json";
 
 const ProductContext = createContext();
 
@@ -10,13 +9,13 @@ export const ProductProvider = ({ children }) => {
   const [clickedButtons, setClickedButtons] = useState({});
   const [fetchedData, setFetchedData] = useState([]);
 
-  const updateSpots = () => {
-    mock.data.map((item) => {});
-  };
-
   const searchItems = (searchWord) => {
     return setResults(
-      fetchedData.filter((element) => element.productName.includes(searchWord))
+      fetchedData.filter(
+        (element) =>
+          element.productName.includes(searchWord) ||
+          element.productDescription.includes(searchWord)
+      )
     );
   };
 

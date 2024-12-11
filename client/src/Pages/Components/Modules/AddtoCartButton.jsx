@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useProductContext } from "../../ProductContext";
+import { useProductContext } from "../ProductContext";
 
 function AddToCartButton({ stock, productId }) {
   const { clickedButtons, handleButtonClick, setCoursesCount, coursesCount } =
@@ -21,7 +21,9 @@ function AddToCartButton({ stock, productId }) {
           {clickedButtons[productId] ? "Added" : "Add to cart"}
         </button>
       ) : (
-        <p className="outOfStock">Out of Stock</p>
+        <p className="outOfStock" aria-label="out of stock">
+          Out of Stock
+        </p>
       )}
     </>
   );

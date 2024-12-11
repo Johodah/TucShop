@@ -3,14 +3,13 @@ import { useProductContext } from "../ProductContext";
 
 function Cart() {
   const { coursesCount } = useProductContext();
-  console.log("in the cart " + coursesCount);
 
   const handleClick = () => {
     window.location.pathname = "/checkout";
   };
 
   return (
-    <>
+    <div>
       <button onClick={handleClick}>
         <img
           alt="cart"
@@ -21,7 +20,7 @@ function Cart() {
       {coursesCount > 0 ? (
         <div className="cart-count">{coursesCount}</div>
       ) : null}
-    </>
+    </div>
   );
 }
 

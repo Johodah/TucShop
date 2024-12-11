@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import AddToCart from "../Components/Modules/AddToCartButton/AddtoCartButton";
+import AddToCart from "../Components/Modules/AddtoCartButton";
 import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../Components/ProductContext";
 
