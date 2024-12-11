@@ -23,7 +23,7 @@ const Checkout = () => {
     purchaseCompleted: false,
     showPaymentForm: false,
     showPayButton: true,
-    paymentDetails: { accountHolderName: "", cardNumber: "", expDate: "", cvv: "" },
+    paymentDetails: { accountHolderName: "", cardNumber: "", expirationDate: "", cvv: "" },
   });
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
@@ -52,18 +52,18 @@ const Checkout = () => {
   const initiatePayment = () => updateState({ showPaymentForm: true, showPayButton: false });
 
   const completePurchase = () => {
-    const { accountHolderName, cardNumber, expDate, cvv } = state.paymentDetails;
+    const { accountHolderName, cardNumber, expirationDate, cvv } = state.paymentDetails;
 
     if (!accountHolderName.trim()) return alert(VALIDATION_MESSAGES.accountHolderName);
     if (!cardNumber || cardNumber.replace(/\D/g, "").length !== 16) return alert(VALIDATION_MESSAGES.cardNumber);
-    if (!expDate || expDate.length !== 5 || !/^\d{2}\/\d{2}$/.test(expDate)) return alert(VALIDATION_MESSAGES.expirationDate);
+    if (!expirationDate || expirationDate.length !== 5 || !/^\d{2}\/\d{2}$/.test(expirationDate)) return alert(VALIDATION_MESSAGES.expirationDate);
     if (!cvv || cvv.length !== 3 || !/^\d{3}$/.test(cvv)) return alert(VALIDATION_MESSAGES.cvv);
 
     setCartItems([]);
     sessionStorage.setItem("cartItems", JSON.stringify([]));
 
     updateState({
-      paymentDetails: { accountHolderName: "", cardNumber: "", expDate: "", cvv: "" },
+      paymentDetails: { accountHolderName: "", cardNumber: "", expirationDate: "", cvv: "" },
       purchaseCompleted: true,
       showPaymentForm: false,
     });
@@ -83,7 +83,7 @@ const Checkout = () => {
       accountHolderName: (v) => v.replace(/[^A-Za-z\s]/g, ""),
       cardNumber: (v) => v.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1-").slice(0, 19),
       expirationDate: (v) => v.replace(/\D/g, "").slice(0, 4).replace(/(\d{2})(?=\d)/, "$1/").slice(0, 5),
-      cvv: (v) => v.slice(0, 3),
+      cvv: (v) => v.replace(/\D/g, "").slice(0, 3),
     };
     return formatters[name] ? formatters[name](value) : value;
   };

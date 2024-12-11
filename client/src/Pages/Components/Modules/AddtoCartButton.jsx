@@ -10,6 +10,8 @@ function AddToCartButton({ stock, productId, productName, productDescription, pr
 
   const handleClick = (event) => {
     event.stopPropagation();
+    if (clickedButtons[productId]) return;
+
     handleButtonClick(productId);
     setCoursesCount((prevState) => prevState + 1);
 
@@ -20,12 +22,14 @@ function AddToCartButton({ stock, productId, productName, productDescription, pr
       productName,
       productDescription,
       price,
-      stock 
+      stock,
     };
 
-    cartItems.push(newItem);
-
-    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    const isAlreadyInCart = cartItems.some(item => item.productId === productId);
+    if (!isAlreadyInCart) {
+      cartItems.push(newItem);
+      sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
   };
 
   return (
