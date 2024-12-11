@@ -1,15 +1,29 @@
 using Microsoft.EntityFrameworkCore;
 using Server.Database;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TucShop API", Version = "v1" });
+});
 
 builder.Services.AddDbContext<TucShopContext>(options =>
-options.UseSqlite("Data Source=tucshop.db"));
+    options.UseSqlite("Data Source=tucshop.db"));
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -17,13 +31,16 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "TucShop API V1");
+    });
 }
 
 app.UseHttpsRedirection();
-
-
-//.WithOpenApi();
+app.UseAuthorization();
+app.UseCors();
+app.MapControllers();
 
 app.Run();
 

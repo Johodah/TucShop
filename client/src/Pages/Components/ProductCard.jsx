@@ -1,22 +1,49 @@
-import React from "react";
-import mockData from "../Components/Modules/mockData.json";
+import React, { useEffect } from "react";
+import AddToCart from "../Components/Modules/AddToCartButton/AddtoCartButton";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard() {
-  const incomingData = mockData;
+  const [incomingData, setIncomingData] = React.useState([]);
+  const [error, setError] = React.useState(null);
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    navigate("/product", { state: { product: item } });
+  };
+
+  useEffect(() => {
+    fetch("https://localhost:7181/api/Products")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setIncomingData(data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
 
   return (
     <div className="mainContent">
-      {incomingData.data.map((item) => {
-        return (
-          <div key={item.productId} className="courseContainer">
-            <h3>{item.name}</h3>
-            <img src={item.image} alt={"course"} />
-            <p>{item.shortDescription}</p>
-            <p>{item.price} kr</p>
-            <button className="buyButton">Add to cart</button>
-          </div>
-        );
-      })}
+      {error && <p className="error">{error}</p>}
+      {incomingData.length > 0 &&
+        incomingData.map((item) => {
+          return (
+            <button onClick={() => handleClick(item)} key={item.productId}>
+              <div className="courseContainer">
+                <h3>{item.productName}</h3>
+                <p>{item.productDescription}</p>
+                <p>{item.stock} spot(s)</p>
+                <p>{item.price} kr</p>
+                <AddToCart stock={item.stock} productId={item.productId} />
+              </div>
+            </button>
+          );
+        })}
     </div>
   );
 }
