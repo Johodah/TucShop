@@ -8,11 +8,11 @@ function AddToCartButton({ stock, productId, productName, productDescription, pr
     setCoursesCount(coursesCount);
   }, [coursesCount]);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.stopPropagation();
     handleButtonClick(productId);
     setCoursesCount((prevState) => prevState + 1);
 
-    // Get cart items from sessionStorage or initialize as an empty array
     const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
 
     const newItem = {
@@ -20,13 +20,11 @@ function AddToCartButton({ stock, productId, productName, productDescription, pr
       productName,
       productDescription,
       price,
-      stock // Add stock to the cart item
+      stock 
     };
 
-    // Push the new item into the cart
     cartItems.push(newItem);
 
-    // Save the updated cart back to sessionStorage
     sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
 

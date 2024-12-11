@@ -43,7 +43,6 @@ function ProductCard() {
                 <p>{item.productDescription}</p>
                 <p>{item.stock} spot(s)</p>
                 <p>{item.price} kr</p>
-                {/* Pass all product details to AddToCartButton */}
                 <AddToCartButton
                   stock={item.stock}
                   productId={item.productId}

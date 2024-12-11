@@ -9,11 +9,12 @@
   border-radius: 0.625rem;
   padding-top: 2rem;
   width: 39%;
-  min-height: 12.5rem;
   max-height: 25rem;
   overflow-y: auto;
 }
-
+.cart-item-container:empty {
+  display: none;
+}
 .cart-item-container.hidden-border {
   border: none;
 }
