@@ -9,7 +9,7 @@
   border-radius: 0.625rem;
   padding-top: 2rem;
   width: 39%;
-  height: 25rem;
+  max-height: 25rem;
   overflow-y: auto;
 }
 
