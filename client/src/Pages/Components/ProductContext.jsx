@@ -9,12 +9,32 @@ export const useProductContext = () => {
 export const ProductProvider = ({ children }) => {
   const [coursesCount, setCoursesCount] = useState(0);
   const [clickedButtons, setClickedButtons] = useState({});
-  const [fetchedData, setFetchedData] = useState([]);  
+  const [fetchedData, setFetchedData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     setCoursesCount(cartItems.length);
-  }, []); 
+  }, []);
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setResults(fetchedData);
+    } else {
+      setResults(
+        fetchedData.filter(
+          (element) =>
+            element.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            element.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }
+  }, [searchTerm, fetchedData]);
+
+  const searchItems = (searchWord) => {
+    setSearchTerm(searchWord);
+  };
 
   const handleButtonClick = (productId) => {
     const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
@@ -34,8 +54,12 @@ export const ProductProvider = ({ children }) => {
         clickedButtons,
         handleButtonClick,
         setCoursesCount,
-        fetchedData,   
-        setFetchedData 
+        fetchedData,
+        setFetchedData,
+        searchItems,
+        searchTerm,
+        setSearchTerm,
+        results,
       }}
     >
       {children}

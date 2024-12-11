@@ -2,15 +2,14 @@ import React from "react";
 import { useProductContext } from "../ProductContext";
 
 function Search() {
-  const { searchItems, setTag, tag } = useProductContext();
+  const { searchItems, setSearchTerm, searchTerm } = useProductContext();
 
   const handleChange = (event) => {
-    setTag(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   const handleClick = () => {
-    searchItems(tag);
-    setTag("");
+    searchItems(searchTerm); 
   };
 
   return (
@@ -18,7 +17,7 @@ function Search() {
       <input
         type="search"
         placeholder="Search..."
-        value={tag}
+        value={searchTerm}
         onChange={handleChange}
       />
       <button className="search-button" onClick={handleClick}>
