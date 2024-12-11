@@ -34,8 +34,8 @@ export const ProductProvider = ({ children }) => {
         clickedButtons,
         handleButtonClick,
         setCoursesCount,
-        fetchedData,   // Provide fetchedData
-        setFetchedData // Provide setFetchedData
+        fetchedData,   
+        setFetchedData 
       }}
     >
       {children}
