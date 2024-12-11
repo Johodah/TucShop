@@ -41,7 +41,7 @@ const Checkout = () => {
   const handlePurchase = () => {
     if (paymentDetails.cardNumber && paymentDetails.expDate && paymentDetails.cvv) {
       setCartItems([]);
-      setPaymentDetails({ cardNumber: '', expDate: '', cvv: '' }); // Clear payment fields
+      setPaymentDetails({ cardNumber: '', expDate: '', cvv: '' });
       setPurchaseCompleted(true);
       setShowPaymentForm(false);
 
@@ -138,7 +138,7 @@ const Checkout = () => {
           onCancel={handleCancelDelete}
         />
       )}
-      
+
       {purchaseCompleted && (
         <PurchasePopup
           message="Thank you for your purchase!"
