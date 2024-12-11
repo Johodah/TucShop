@@ -1,45 +1,44 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ProductContext = createContext();
 
-export const ProductProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]); // Cart state
+export const useProductContext = () => {
+  return useContext(ProductContext);
+};
 
-  // Other context states
-  const [results, setResults] = useState([]);
-  const [tag, setTag] = useState("");
+export const ProductProvider = ({ children }) => {
   const [coursesCount, setCoursesCount] = useState(0);
   const [clickedButtons, setClickedButtons] = useState({});
-  const [fetchedData, setFetchedData] = useState([]);
+  const [fetchedData, setFetchedData] = useState([]);  
 
-  const handleButtonClick = (productId, productData) => {
-    setCartItems((prevState) => {
-      if (prevState.some(item => item.productId === productId)) {
-        return prevState;
-      }
-      return [...prevState, productData];
-    });
-    setCoursesCount((prevState) => prevState + 1);
+  useEffect(() => {
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    setCoursesCount(cartItems.length);
+  }, []); 
+
+  const handleButtonClick = (productId) => {
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    const existingItemIndex = cartItems.findIndex(item => item.productId === productId);
+
+    setCoursesCount(cartItems.length);
+    setClickedButtons((prevState) => ({
+      ...prevState,
+      [productId]: true,
+    }));
   };
 
   return (
     <ProductContext.Provider
       value={{
-        cartItems,
-        setCartItems,
-        handleButtonClick,
-        results,
-        tag,
-        setTag,
-        clickedButtons,
-        setCoursesCount,
         coursesCount,
-        setFetchedData,
+        clickedButtons,
+        handleButtonClick,
+        setCoursesCount,
+        fetchedData,   // Provide fetchedData
+        setFetchedData // Provide setFetchedData
       }}
     >
       {children}
     </ProductContext.Provider>
   );
 };
-
-export const useProductContext = () => useContext(ProductContext);
