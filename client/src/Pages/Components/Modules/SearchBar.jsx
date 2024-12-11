@@ -14,14 +14,18 @@ function Search() {
   };
 
   return (
-    <div className="searchBar">
+    <div className="searchBar" data-testid="searchbar">
       <input
         type="search"
         placeholder="Search..."
         value={tag}
         onChange={handleChange}
       />
-      <button className="searchButton" onClick={handleClick}>
+      <button
+        className="searchButton"
+        onClick={handleClick}
+        data-testid="search"
+      >
         Go!
       </button>
     </div>
