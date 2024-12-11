@@ -9,7 +9,7 @@ function Search() {
   };
 
   const handleClick = () => {
-    searchItems(searchTerm); 
+    searchItems(); 
   };
 
   return (

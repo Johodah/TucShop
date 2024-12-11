@@ -18,22 +18,14 @@ export const ProductProvider = ({ children }) => {
     setCoursesCount(cartItems.length);
   }, []);
 
-  useEffect(() => {
-    if (searchTerm === "") {
-      setResults(fetchedData);
-    } else {
-      setResults(
-        fetchedData.filter(
-          (element) =>
-            element.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            element.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-    }
-  }, [searchTerm, fetchedData]);
-
-  const searchItems = (searchWord) => {
-    setSearchTerm(searchWord);
+  const searchItems = () => {
+    setResults(
+      fetchedData.filter(
+        (element) =>
+          element.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          element.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
   };
 
   const handleButtonClick = (productId) => {
@@ -58,7 +50,7 @@ export const ProductProvider = ({ children }) => {
         setFetchedData,
         searchItems,
         searchTerm,
-        setSearchTerm,
+        setSearchTerm, 
         results,
       }}
     >
