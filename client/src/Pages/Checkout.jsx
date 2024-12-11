@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import mockData from "/src/Pages/Components/Modules/mockData.json";
 import CartItemList from "./Components/Modules/CartItemList";
 import CartTotal from "./Components/Modules/CartTotal";
 import ConfirmPopup from "./Components/Modules/ConfirmPopup";
@@ -33,8 +32,6 @@ const Checkout = () => {
     if (savedCart) {
       setCartItems(savedCart);
     } else {
-      sessionStorage.setItem("cartItems", JSON.stringify(mockData.data));
-      setCartItems(mockData.data);
     }
   }, []);
 
