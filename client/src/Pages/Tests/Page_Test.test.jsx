@@ -1,7 +1,5 @@
 import React from "react";
 import Cart from "../Components/Modules/Cart";
-import HomePage from "../../Pages/HomePage";
-import Product from "../../Pages/Product";
 import Checkout from "../Checkout";
 import Header from "../Components/Header";
 import Logo from "../Components/Modules/Logo";
@@ -10,7 +8,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { ProductProvider } from "../Components/ProductContext";
 import { MemoryRouter } from "react-router-dom";
-import ProductCard from "../Components/ProductCard";
 
 describe("Header Component", () => {
   test("should render the Header component", () => {
