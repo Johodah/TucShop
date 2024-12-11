@@ -11,7 +11,7 @@ const CartItem = ({ item, clicked, onClick, stock }) => {
                     <div className="cart-item-stock-price-container">
                     <p className="cart-item-price">{item.price} kr</p>
                     <div className="stock-message">
-                        <p>{stock} items left in stock</p>
+                        <p>{stock} left in stock</p>
                     </div>
                     </div>
                     <img
