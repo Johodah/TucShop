@@ -31,11 +31,11 @@ function AddToCartButton({ stock, productId, productName, productDescription, pr
   return (
     <>
       {stock > 0 ? (
-        <button className="buyButton" onClick={handleClick}>
+        <button className="buy-button" onClick={handleClick}>
           {clickedButtons[productId] ? "Added" : "Add to cart"}
         </button>
       ) : (
-        <p className="outOfStock" aria-label="out of stock">
+        <p className="out-of-stock" aria-label="out of stock">
           Out of Stock
         </p>
       )}

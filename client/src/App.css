@@ -82,7 +82,7 @@ button {
   font-weight: bold;
 }
 
-.mainContent {
+.main-content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -90,7 +90,7 @@ button {
   margin-bottom: 2rem;
 }
 
-.courseContainer {
+.course-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -120,7 +120,7 @@ button {
   padding: 4rem;
 }
 
-.courseContainer>p {
+.course-container>p {
   text-wrap: wrap;
   width: 10rem;
   font-size: large;
@@ -128,7 +128,7 @@ button {
   margin: 1rem;
 }
 
-.searchBar>input {
+.search-bar>input {
   width: 50rem;
   height: 3rem;
   font-size: large;
@@ -137,7 +137,7 @@ button {
   border-radius: 10px;
 }
 
-.searchButton {
+.search-button {
   background-color: rgb(135, 187, 247);
   border: none;
   cursor: pointer;
@@ -147,7 +147,7 @@ button {
   font-weight: bold;
 }
 
-.buyButton-unavailable {
+.buy-button-unavailable {
   background-color: rgb(236, 236, 236);
   border: none;
   cursor: not-allowed;
@@ -157,6 +157,6 @@ button {
   font-weight: bold;
 }
 
-.outOfStock {
+.out-of-stock {
   color: red;
 }

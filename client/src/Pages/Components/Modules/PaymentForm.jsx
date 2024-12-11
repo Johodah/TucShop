@@ -25,7 +25,7 @@ const PaymentForm = ({ paymentDetails, handlePaymentChange, handlePurchase }) =>
       <div className="payment-row">
         <input
           type="text"
-          name="expDate"
+          name="expirationDate"
           placeholder="Expiration Date"
           value={paymentDetails.expDate}
           onChange={handlePaymentChange}

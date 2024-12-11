@@ -11,7 +11,7 @@ import './Components/Modules/Checkout.css';
 const VALIDATION_MESSAGES = {
   accountHolderName: "Please fill out the Account Holder Name.",
   cardNumber: "Please enter a valid Card Number with 16 digits.",
-  expDate: "Please enter a valid Expiration Date in MM/YY format.",
+  expirationDate: "Please enter a valid Expiration Date in MM/YY format.",
   cvv: "Please enter a valid CVV with exactly 3 digits."
 };
 
@@ -106,7 +106,7 @@ const Checkout = () => {
         return value.replace(/[^A-Za-z\s]/g, '');
       case "cardNumber":
         return value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-').slice(0, 19);
-      case "expDate":
+      case "expirationDate":
         return value.replace(/\D/g, '').slice(0, 4).replace(/(\d{2})(?=\d)/, '$1/').slice(0, 5);
       case "cvv":
         return value.slice(0, 3);

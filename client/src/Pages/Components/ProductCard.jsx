@@ -38,7 +38,7 @@ function ProductCard() {
         incomingData.map((item) => {
           return (
             <button onClick={() => handleClick(item)} key={item.productId}>
-              <div className="courseContainer">
+              <div className="course-container">
                 <h3>{item.productName}</h3>
                 <p>{item.productDescription}</p>
                 <p>{item.stock} spot(s)</p>
