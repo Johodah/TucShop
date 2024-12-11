@@ -1,21 +1,21 @@
 import React, { createContext, useContext, useState } from "react";
-import mock from "../Components/Modules/mockData.json";
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [tag, setTag] = useState("");
-  const [coursesCount, setCoursesCount] = useState();
+  const [coursesCount, setCoursesCount] = useState(0);
   const [clickedButtons, setClickedButtons] = useState({});
-
-  const updateSpots = () => {
-    mock.data.map((item) => {});
-  };
+  const [fetchedData, setFetchedData] = useState([]);
 
   const searchItems = (searchWord) => {
     return setResults(
-      mock.data.filter((element) => element.category.includes(searchWord))
+      fetchedData.filter(
+        (element) =>
+          element.productName.includes(searchWord) ||
+          element.productDescription.includes(searchWord)
+      )
     );
   };
 
@@ -36,6 +36,8 @@ export const ProductProvider = ({ children }) => {
         clickedButtons,
         handleButtonClick,
         setCoursesCount,
+        coursesCount,
+        setFetchedData,
       }}
     >
       {children}

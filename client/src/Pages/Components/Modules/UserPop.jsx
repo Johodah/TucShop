@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import React, { useState } from "react";
 
 function UserPop() {
   const [show, setShow] = useState(false);

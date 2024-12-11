@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
-import AddToCart from "../Components/Modules/AddToCartButton/AddtoCartButton";
+import AddToCart from "../Components/Modules/AddtoCartButton";
 import { useNavigate } from "react-router-dom";
+import { useProductContext } from "../Components/ProductContext";
 
 function ProductCard() {
   const [incomingData, setIncomingData] = React.useState([]);
   const [error, setError] = React.useState(null);
+  const { setFetchedData } = useProductContext();
+
   const navigate = useNavigate();
 
   const handleClick = (item) => {
@@ -21,6 +24,7 @@ function ProductCard() {
       })
       .then((data) => {
         setIncomingData(data);
+        setFetchedData(data);
       })
       .catch((error) => {
         setError(error.message);

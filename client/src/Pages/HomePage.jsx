@@ -1,11 +1,17 @@
 import React from "react";
 import Search from "../Pages/Components/Modules/SearchBar";
 import ProductCard from "../Pages/Components/ProductCard";
-import AddToCart from "../Pages/Components/Modules/AddToCartButton/AddtoCartButton";
+import AddToCart from "../Pages/Components/Modules/AddtoCartButton";
 import { useProductContext } from "./Components/ProductContext";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const { results } = useProductContext();
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    navigate("/product", { state: { product: item } });
+  };
 
   return (
     <div>
@@ -23,9 +29,8 @@ function HomePage() {
             return (
               <button onClick={() => handleClick(item)} key={item.productId}>
                 <div className="courseContainer">
-                  <h3>{item.name}</h3>
-                  <img src={item.image} alt={"course"} />
-                  <p>{item.shortDescription}</p>
+                  <h3>{item.productName}</h3>
+                  <p>{item.productDescription}</p>
                   <p>{item.stock} spot(s)</p>
                   <p>{item.price} kr</p>
                   <AddToCart stock={item.stock} productId={item.productId} />
