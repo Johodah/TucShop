@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import mockData from '/src/Pages/Components/Modules/mockData.json';
-import CartItemList from './Components/Modules/CartItemList';
-import CartTotal from './Components/Modules/CartTotal';
-import ConfirmPopup from './Components/Modules/ConfirmPopup';
-import PurchasePopup from './Components/Modules/PurchasePopup';
-import PaymentForm from './Components/Modules/PaymentForm';
-import PaymentButton from './Components/Modules/PaymentButton';
-import './Components/Modules/Checkout.css';
+import mockData from "/src/Pages/Components/Modules/mockData.json";
+import CartItemList from "./Components/Modules/CartItemList";
+import CartTotal from "./Components/Modules/CartTotal";
+import ConfirmPopup from "./Components/Modules/ConfirmPopup";
+import PurchasePopup from "./Components/Modules/PurchasePopup";
+import PaymentForm from "./Components/Modules/PaymentForm";
+import PaymentButton from "./Components/Modules/PaymentButton";
+import "./Components/Modules/Checkout.css";
 
 const VALIDATION_MESSAGES = {
   accountHolderName: "Please fill out the Account Holder Name.",
   cardNumber: "Please enter a valid Card Number with 16 digits.",
   expirationDate: "Please enter a valid Expiration Date in MM/YY format.",
-  cvv: "Please enter a valid CVV with exactly 3 digits."
+  cvv: "Please enter a valid CVV with exactly 3 digits.",
 };
 
 const Checkout = () => {
@@ -23,7 +23,7 @@ const Checkout = () => {
     purchaseCompleted: false,
     showPaymentForm: false,
     showPayButton: true,
-    paymentDetails: { accountHolderName: '', cardNumber: '', expDate: '', cvv: '' }
+    paymentDetails: { accountHolderName: "", cardNumber: "", expDate: "", cvv: "" },
   });
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
@@ -38,118 +38,72 @@ const Checkout = () => {
     }
   }, []);
 
-  const handleClick = (productId) => {
-    setState(prevState => ({ ...prevState, clicked: productId, showConfirm: true }));
-  };
+  const updateState = (updates) => setState((prevState) => ({ ...prevState, ...updates }));
 
-  const handleConfirmDelete = () => {
-    const updatedItems = cartItems.filter(item => item.productId !== state.clicked);
+  const confirmDeleteItem = () => {
+    const updatedItems = cartItems.filter((item) => item.productId !== state.clicked);
     setCartItems(updatedItems);
-    sessionStorage.setItem("cartItems", JSON.stringify(updatedItems)); 
-    setState(prevState => ({ ...prevState, showConfirm: false, clicked: null }));
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedItems));
+    updateState({ showConfirm: false, clicked: null });
   };
 
-  const handleCancelDelete = () => {
-    setState(prevState => ({ ...prevState, showConfirm: false, clicked: null }));
-  };
+  const cancelDeleteItem = () => updateState({ showConfirm: false, clicked: null });
 
-  const handlePay = () => {
-    setState(prevState => ({ ...prevState, showPaymentForm: true, showPayButton: false }));
-  };
+  const initiatePayment = () => updateState({ showPaymentForm: true, showPayButton: false });
 
-  const handlePurchase = () => {
+  const completePurchase = () => {
     const { accountHolderName, cardNumber, expDate, cvv } = state.paymentDetails;
 
     if (!accountHolderName.trim()) return alert(VALIDATION_MESSAGES.accountHolderName);
-    if (!cardNumber || cardNumber.replace(/\D/g, '').length !== 16) return alert(VALIDATION_MESSAGES.cardNumber);
-    if (!expDate || expDate.length !== 5 || !/^\d{2}\/\d{2}$/.test(expDate)) return alert(VALIDATION_MESSAGES.expDate);
+    if (!cardNumber || cardNumber.replace(/\D/g, "").length !== 16) return alert(VALIDATION_MESSAGES.cardNumber);
+    if (!expDate || expDate.length !== 5 || !/^\d{2}\/\d{2}$/.test(expDate)) return alert(VALIDATION_MESSAGES.expirationDate);
     if (!cvv || cvv.length !== 3 || !/^\d{3}$/.test(cvv)) return alert(VALIDATION_MESSAGES.cvv);
 
     setCartItems([]);
-    sessionStorage.setItem("cartItems", JSON.stringify([])); 
+    sessionStorage.setItem("cartItems", JSON.stringify([]));
 
-    setState(prevState => ({
-      ...prevState,
-      paymentDetails: { cardNumber: '', expDate: '', cvv: '', accountHolderName: '' },
+    updateState({
+      paymentDetails: { accountHolderName: "", cardNumber: "", expDate: "", cvv: "" },
       purchaseCompleted: true,
-      showPaymentForm: false
-    }));
+      showPaymentForm: false,
+    });
 
-    setTimeout(() => {
-      setState(prevState => ({
-        ...prevState,
-        purchaseCompleted: false,
-        showPayButton: true,
-        showPaymentForm: false
-      }));
-      sessionStorage.setItem("cartItems"); 
-    }, 2000);
+    setTimeout(() => updateState({ purchaseCompleted: false, showPayButton: true }), 2000);
   };
 
-  const handleClosePopup = () => {
-    setState(prevState => ({ ...prevState, purchaseCompleted: false }));
-  };
-
-  const handlePaymentChange = (e) => {
+  const handlePaymentInputChange = (e) => {
     const { name, value } = e.target;
-    const formattedValue = formatPaymentField(name, value);
-
-    setState(prevState => ({
-      ...prevState,
-      paymentDetails: { ...prevState.paymentDetails, [name]: formattedValue }
-    }));
+    updateState({
+      paymentDetails: { ...state.paymentDetails, [name]: formatPaymentField(name, value) },
+    });
   };
 
   const formatPaymentField = (name, value) => {
-    switch (name) {
-      case "accountHolderName":
-        return value.replace(/[^A-Za-z\s]/g, '');
-      case "cardNumber":
-        return value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-').slice(0, 19);
-      case "expirationDate":
-        return value.replace(/\D/g, '').slice(0, 4).replace(/(\d{2})(?=\d)/, '$1/').slice(0, 5);
-      case "cvv":
-        return value.slice(0, 3);
-      default:
-        return value;
-    }
+    const formatters = {
+      accountHolderName: (v) => v.replace(/[^A-Za-z\s]/g, ""),
+      cardNumber: (v) => v.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1-").slice(0, 19),
+      expirationDate: (v) => v.replace(/\D/g, "").slice(0, 4).replace(/(\d{2})(?=\d)/, "$1/").slice(0, 5),
+      cvv: (v) => v.slice(0, 3),
+    };
+    return formatters[name] ? formatters[name](value) : value;
   };
 
   return (
     <div className="checkout">
       {!state.purchaseCompleted && (
-        <CartItemList 
-          cartItems={cartItems} 
-          clicked={state.clicked} 
-          handleClick={handleClick} 
-        />
+        <CartItemList cartItems={cartItems} clicked={state.clicked} handleClick={(id) => updateState({ clicked: id, showConfirm: true })} />
       )}
-      <CartTotal 
-        totalPrice={totalPrice} 
-        purchaseCompleted={state.purchaseCompleted} 
-      />
-      {state.showPayButton && (
-        <PaymentButton handlePay={handlePay} />
-      )}
+      <CartTotal totalPrice={totalPrice} purchaseCompleted={state.purchaseCompleted} />
+      {state.showPayButton && <PaymentButton handlePay={initiatePayment} />}
       {state.showPaymentForm && (
         <PaymentForm
           paymentDetails={state.paymentDetails}
-          handlePaymentChange={handlePaymentChange}
-          handlePurchase={handlePurchase}
+          handlePaymentChange={handlePaymentInputChange}
+          handlePurchase={completePurchase}
         />
       )}
-      {state.showConfirm && (
-        <ConfirmPopup
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
-      )}
-      {state.purchaseCompleted && (
-        <PurchasePopup
-          message="Thank you for your purchase!"
-          onClose={handleClosePopup}
-        />
-      )}
+      {state.showConfirm && <ConfirmPopup onConfirm={confirmDeleteItem} onCancel={cancelDeleteItem} />}
+      {state.purchaseCompleted && <PurchasePopup message="Thank you for your purchase!" onClose={() => updateState({ purchaseCompleted: false })} />}
     </div>
   );
 };
