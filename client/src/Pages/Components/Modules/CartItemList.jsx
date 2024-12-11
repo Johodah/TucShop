@@ -10,7 +10,7 @@ const CartItemList = ({ cartItems, clicked, handleClick }) => {
           item={item}
           clicked={clicked}
           onClick={handleClick}
-          stock={item.stock}
+          stock={item.stock} 
         />
       ))}
     </div>

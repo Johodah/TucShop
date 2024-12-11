@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useProductContext } from "../ProductContext";
 
-function AddToCartButton({ stock, productId }) {
-  const { clickedButtons, handleButtonClick, setCoursesCount, coursesCount } =
-    useProductContext();
+function AddToCartButton({ stock, productId, productName, productDescription, price }) {
+  const { clickedButtons, handleButtonClick, setCoursesCount, coursesCount } = useProductContext();
 
   useEffect(() => {
     setCoursesCount(coursesCount);
@@ -12,6 +11,23 @@ function AddToCartButton({ stock, productId }) {
   const handleClick = () => {
     handleButtonClick(productId);
     setCoursesCount((prevState) => prevState + 1);
+
+    // Get cart items from sessionStorage or initialize as an empty array
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+    const newItem = {
+      productId,
+      productName,
+      productDescription,
+      price,
+      stock // Add stock to the cart item
+    };
+
+    // Push the new item into the cart
+    cartItems.push(newItem);
+
+    // Save the updated cart back to sessionStorage
+    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
 
   return (

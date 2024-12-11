@@ -3,38 +3,35 @@ import React, { createContext, useContext, useState } from "react";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]); // Cart state
+
+  // Other context states
   const [results, setResults] = useState([]);
   const [tag, setTag] = useState("");
   const [coursesCount, setCoursesCount] = useState(0);
   const [clickedButtons, setClickedButtons] = useState({});
   const [fetchedData, setFetchedData] = useState([]);
 
-  const searchItems = (searchWord) => {
-    return setResults(
-      fetchedData.filter(
-        (element) =>
-          element.productName.includes(searchWord) ||
-          element.productDescription.includes(searchWord)
-      )
-    );
-  };
-
-  const handleButtonClick = (id) => {
-    setClickedButtons((prevState) => ({
-      ...prevState,
-      [id]: true,
-    }));
+  const handleButtonClick = (productId, productData) => {
+    setCartItems((prevState) => {
+      if (prevState.some(item => item.productId === productId)) {
+        return prevState;
+      }
+      return [...prevState, productData];
+    });
+    setCoursesCount((prevState) => prevState + 1);
   };
 
   return (
     <ProductContext.Provider
       value={{
-        searchItems,
+        cartItems,
+        setCartItems,
+        handleButtonClick,
         results,
         tag,
         setTag,
         clickedButtons,
-        handleButtonClick,
         setCoursesCount,
         coursesCount,
         setFetchedData,

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import AddToCart from "../Components/Modules/AddtoCartButton";
+import AddToCartButton from "../Components/Modules/AddtoCartButton";
 import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../Components/ProductContext";
 
@@ -43,7 +43,14 @@ function ProductCard() {
                 <p>{item.productDescription}</p>
                 <p>{item.stock} spot(s)</p>
                 <p>{item.price} kr</p>
-                <AddToCart stock={item.stock} productId={item.productId} />
+                {/* Pass all product details to AddToCartButton */}
+                <AddToCartButton
+                  stock={item.stock}
+                  productId={item.productId}
+                  productName={item.productName}
+                  productDescription={item.productDescription}
+                  price={item.price}
+                />
               </div>
             </button>
           );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import mockData from '/src/Pages/Components/Modules/mockData.json';
 import CartItemList from './Components/Modules/CartItemList';
 import CartTotal from './Components/Modules/CartTotal';
@@ -16,7 +16,7 @@ const VALIDATION_MESSAGES = {
 };
 
 const Checkout = () => {
-  const [cartItems, setCartItems] = useState(mockData.data);
+  const [cartItems, setCartItems] = useState([]);
   const [state, setState] = useState({
     clicked: null,
     showConfirm: false,
@@ -28,12 +28,24 @@ const Checkout = () => {
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
+  useEffect(() => {
+    const savedCart = JSON.parse(sessionStorage.getItem("cartItems"));
+    if (savedCart) {
+      setCartItems(savedCart);
+    } else {
+      sessionStorage.setItem("cartItems", JSON.stringify(mockData.data));
+      setCartItems(mockData.data);
+    }
+  }, []);
+
   const handleClick = (productId) => {
     setState(prevState => ({ ...prevState, clicked: productId, showConfirm: true }));
   };
 
   const handleConfirmDelete = () => {
-    setCartItems(prevItems => prevItems.filter(item => item.productId !== state.clicked));
+    const updatedItems = cartItems.filter(item => item.productId !== state.clicked);
+    setCartItems(updatedItems);
+    sessionStorage.setItem("cartItems", JSON.stringify(updatedItems)); 
     setState(prevState => ({ ...prevState, showConfirm: false, clicked: null }));
   };
 
@@ -54,6 +66,8 @@ const Checkout = () => {
     if (!cvv || cvv.length !== 3 || !/^\d{3}$/.test(cvv)) return alert(VALIDATION_MESSAGES.cvv);
 
     setCartItems([]);
+    sessionStorage.setItem("cartItems", JSON.stringify([])); 
+
     setState(prevState => ({
       ...prevState,
       paymentDetails: { cardNumber: '', expDate: '', cvv: '', accountHolderName: '' },
@@ -68,7 +82,7 @@ const Checkout = () => {
         showPayButton: true,
         showPaymentForm: false
       }));
-      setCartItems(mockData.data);
+      sessionStorage.setItem("cartItems"); 
     }, 2000);
   };
 
