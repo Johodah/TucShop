@@ -99,10 +99,28 @@ button {
   border: 2px, solid, black;
   border-radius: 10px;
   margin: 2rem;
-  max-width: 100%;
+  width: 13rem;
+  height: 20rem;
   padding: 4rem;
 }
-.courseContainer > p {
+
+.course-container-big {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(219, 219, 219);
+  border: 2px, solid, black;
+  border-radius: 10px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  width: 100;
+  padding: 4rem;
+}
+
+.courseContainer>p {
   text-wrap: wrap;
   width: 10rem;
   font-size: large;
@@ -110,7 +128,7 @@ button {
   margin: 1rem;
 }
 
-.searchBar > input {
+.searchBar>input {
   width: 50rem;
   height: 3rem;
   font-size: large;

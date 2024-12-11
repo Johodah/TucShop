@@ -7,7 +7,8 @@ function Product() {
   const item = location.state.product;
 
   return (
-    <div className="courseContainer">
+    
+    <div className="course-container-big">
       <h1>{item.productName}</h1>
       <p>{item.productDescription}</p>
       <p>{item.stock} spot(s)</p>
