@@ -1,14 +1,15 @@
 import React from "react";
+import { useProductContext } from "../ProductContext";
 
 function Cart() {
-  const [count, setCount] = React.useState(2);
+  const { coursesCount } = useProductContext();
 
   const handleClick = () => {
     window.location.pathname = "/checkout";
   };
 
   return (
-    <>
+    <div>
       <button onClick={handleClick}>
         <img
           alt="cart"
@@ -16,8 +17,10 @@ function Cart() {
           width={30}
         />
       </button>
-      {count > 0 ? <div className="cart-count">{count}</div> : null}
-    </>
+      {coursesCount > 0 ? (
+        <div className="cart-count">{coursesCount}</div>
+      ) : null}
+    </div>
   );
 }
 

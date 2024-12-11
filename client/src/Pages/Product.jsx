@@ -1,10 +1,9 @@
 import React from "react";
-import AddToCartButton from "../Pages/Components/Modules/AddToCartButton/AddtoCartButton";
+import AddToCartButton from "../Pages/Components/Modules/AddtoCartButton";
 import { useLocation } from "react-router-dom";
 function Product() {
   const location = useLocation();
   const item = location.state.product;
-  console.log(item);
 
   return (
     <div className="courseContainer">
