@@ -41,6 +41,7 @@ const Checkout = () => {
   const handlePurchase = () => {
     if (paymentDetails.cardNumber && paymentDetails.expDate && paymentDetails.cvv) {
       setCartItems([]);
+      setPaymentDetails({ cardNumber: '', expDate: '', cvv: '' }); // Clear payment fields
       setPurchaseCompleted(true);
       setShowPaymentForm(false);
 
@@ -69,22 +70,28 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
-      {cartItems.map((item) => (
-        <CartItem
-          key={item.productId}
-          item={item}
-          clicked={clicked}
-          onClick={handleClick}
-          stock={item.stock}
-        />
-      ))}
-      {!purchaseCompleted && <h2>Total: {totalPrice} kr</h2>}
+      {!purchaseCompleted && (
+        <div className="cart-item-container">
+          {cartItems.map((item) => (
+            <CartItem
+              key={item.productId}
+              item={item}
+              clicked={clicked}
+              onClick={handleClick}
+              stock={item.stock}
+            />
+          ))}
+        </div>
+      )}
+      <div className="cart-total-price">
+        {!purchaseCompleted && <h2>Total: {totalPrice} kr</h2>}
+      </div>
       {showPayButton && (
         <button onClick={handlePay} className="pay-button">Pay</button>
       )}
       {showPaymentForm && (
         <div className="payment-form">
-          <h3>Enter Payment Information</h3>
+          <h3 className="payment-information-text">Enter Payment Information</h3>
           <div className="payment-row">
             <input
               type="text"
@@ -131,7 +138,7 @@ const Checkout = () => {
           onCancel={handleCancelDelete}
         />
       )}
-
+      
       {purchaseCompleted && (
         <PurchasePopup
           message="Thank you for your purchase!"

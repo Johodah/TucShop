@@ -1,3 +1,23 @@
+
+.checkout {
+  justify-items: center;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.cart-item-container {
+  border: 0.125rem solid black;
+  border-radius: 0.625rem;
+  padding-top: 2rem;
+  width: 39%;
+  height: 25rem;
+  overflow-y: auto;
+}
+
+.cart-item-container.hidden-border {
+  border: none;
+}
+
 .cart-item {
   display: flex;
   flex-direction: column;
@@ -51,6 +71,11 @@
   margin-left: 10rem;
 }
 
+.cart-total-price {
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
 .stock-message {
   font-size: 0.5rem;
   color: #333;
@@ -88,6 +113,11 @@
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
+}
+
+.payment-information-text {
+  margin-top: -0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .payment-row {
