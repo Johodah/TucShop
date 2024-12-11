@@ -1,5 +1,6 @@
 import React from "react";
-import trashCan from './Images/trash-can.png';
+import trashCan from '../../../../public/trash-can.png';
+
 
 const CartItem = ({ item, clicked, onClick, stock }) => {
     return (
