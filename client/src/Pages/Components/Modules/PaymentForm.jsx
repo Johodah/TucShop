@@ -26,7 +26,7 @@ const PaymentForm = ({ paymentDetails, handlePaymentChange, handlePurchase }) =>
         <input
           type="text"
           name="expirationDate"
-          placeholder="Expiration Date"
+          placeholder="Expiration Date (MM/YY)"
           value={paymentDetails.expirationDate}
           onChange={handlePaymentChange}
           required
