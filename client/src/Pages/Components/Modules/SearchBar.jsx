@@ -2,26 +2,25 @@ import React from "react";
 import { useProductContext } from "../ProductContext";
 
 function Search() {
-  const { searchItems, setTag, tag } = useProductContext();
+  const { searchItems, setSearchTerm, searchTerm } = useProductContext();
 
   const handleChange = (event) => {
-    setTag(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   const handleClick = () => {
-    searchItems(tag);
-    setTag("");
+    searchItems(); 
   };
 
   return (
-    <div className="searchBar">
+    <div className="search-bar">
       <input
         type="search"
         placeholder="Search..."
-        value={tag}
+        value={searchTerm}
         onChange={handleChange}
       />
-      <button className="searchButton" onClick={handleClick}>
+      <button className="search-button" onClick={handleClick}>
         Go!
       </button>
     </div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import './Footer.css';
-import tiktokLogo from './Images/tiktok-logo.png';
-import youtubeLogo from './Images/youtube-logo.png';
-import linkedinLogo from './Images/linkedin-logo.png';
-import instagramLogo from './Images/instagram-logo.png';
-import facebookLogo from './Images/facebook-logo.png';
+import tiktokLogo from '../../../../public/tiktok-logo.png';
+import youtubeLogo from '../../../../public/youtube-logo.png';
+import linkedinLogo from '../../../../public/linkedin-logo.png';
+import instagramLogo from '../../../../public/instagram-logo.png';
+import facebookLogo from '../../../../public/facebook-logo.png';
+
 
 const SocialMediaLinks = () => {
   return (

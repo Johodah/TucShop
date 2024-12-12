@@ -50,8 +50,8 @@ button {
 
 .toast {
   position: absolute;
-  top: 50px;
-  right: 90px;
+  top: 3.125rem;
+  right: 5.625rem;
   background-color: cadetblue;
   border-radius: 10%;
   align-items: center;
@@ -60,8 +60,8 @@ button {
 
 .cart-count {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  right: 0.625rem;
   background-color: red;
   color: white;
   border-radius: 50%;
@@ -82,7 +82,7 @@ button {
   font-weight: bold;
 }
 
-.mainContent {
+.main-content {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -90,19 +90,37 @@ button {
   margin-bottom: 2rem;
 }
 
-.courseContainer {
+.course-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(219, 219, 219);
-  border: 2px, solid, black;
-  border-radius: 10px;
+  border: 0.125rem, solid, black;
+  border-radius: 0.625rem;
   margin: 2rem;
-  max-width: 100%;
+  width: 13rem;
+  height: 20rem;
   padding: 4rem;
 }
-.courseContainer > p {
+
+.course-container-big {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(219, 219, 219);
+  border: 0.125rem, solid, black;
+  border-radius: 0.625rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  width: 100;
+  padding: 4rem;
+}
+
+.course-container>p {
   text-wrap: wrap;
   width: 10rem;
   font-size: large;
@@ -110,16 +128,16 @@ button {
   margin: 1rem;
 }
 
-.searchBar > input {
+.search-bar>input {
   width: 50rem;
   height: 3rem;
   font-size: large;
   padding: 0.5rem;
   margin: 1rem;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 }
 
-.searchButton {
+.search-button {
   background-color: rgb(135, 187, 247);
   border: none;
   cursor: pointer;
@@ -129,7 +147,7 @@ button {
   font-weight: bold;
 }
 
-.buyButton-unavailable {
+.buy-button-unavailable {
   background-color: rgb(236, 236, 236);
   border: none;
   cursor: not-allowed;
@@ -139,6 +157,6 @@ button {
   font-weight: bold;
 }
 
-.outOfStock {
+.out-of-stock {
   color: red;
 }

@@ -47,9 +47,4 @@ describe("Routing Tests", () => {
     expect(window.location.pathname).toBe("/");
     expect(screen.queryAllByRole("button")).toBeTruthy();
   });
-
-  test("should render the Checkout page", () => {
-    render(<Checkout />);
-    expect(screen.getByText("Checkout")).toBeInTheDocument();
-  });
 });

@@ -1,48 +1,60 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ProductContext = createContext();
 
+export const useProductContext = () => {
+  return useContext(ProductContext);
+};
+
 export const ProductProvider = ({ children }) => {
-  const [results, setResults] = useState([]);
-  const [tag, setTag] = useState("");
   const [coursesCount, setCoursesCount] = useState(0);
   const [clickedButtons, setClickedButtons] = useState({});
   const [fetchedData, setFetchedData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
 
-  const searchItems = (searchWord) => {
-    return setResults(
+  useEffect(() => {
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    setCoursesCount(cartItems.length);
+  }, []);
+
+  const searchItems = () => {
+    setResults(
       fetchedData.filter(
         (element) =>
-          element.productName.includes(searchWord) ||
-          element.productDescription.includes(searchWord)
+          element.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          element.productDescription.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   };
 
-  const handleButtonClick = (id) => {
+  const handleButtonClick = (productId) => {
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    const existingItemIndex = cartItems.findIndex(item => item.productId === productId);
+
+    setCoursesCount(cartItems.length);
     setClickedButtons((prevState) => ({
       ...prevState,
-      [id]: true,
+      [productId]: true,
     }));
   };
 
   return (
     <ProductContext.Provider
       value={{
-        searchItems,
-        results,
-        tag,
-        setTag,
+        coursesCount,
         clickedButtons,
         handleButtonClick,
         setCoursesCount,
-        coursesCount,
+        fetchedData,
         setFetchedData,
+        searchItems,
+        searchTerm,
+        setSearchTerm, 
+        results,
       }}
     >
       {children}
     </ProductContext.Provider>
   );
 };
-
-export const useProductContext = () => useContext(ProductContext);
