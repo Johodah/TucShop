@@ -104,5 +104,49 @@ namespace Server.Test.Database.Test
 
             _output.WriteLine($"Order retrieved for customer: {savedOrder.Customer.CustomerFirstName} {savedOrder.Customer.CustomerLastName}, Order ID: {savedOrder.OrderId}");
         }
+
+        [Fact]
+        public void UpdateCustomer()
+        {
+            var customer = TestHelper.CreateTestCustomer();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+
+            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
+            Assert.NotNull(savedCustomer);
+
+            var oldFirstName = savedCustomer.CustomerFirstName;
+            var oldLastName = savedCustomer.CustomerLastName;
+
+            savedCustomer.CustomerFirstName = "Hejsan";
+            savedCustomer.CustomerLastName = "Hoppsan";
+            savedCustomer.UpdatedAt = new DateOnly(2024, 12, 12);
+
+            _context.Customers.Update(savedCustomer);
+            _context.SaveChanges();
+
+            var updatedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == savedCustomer.CustomerId);
+            Assert.NotNull(updatedCustomer);
+            Assert.Equal("Hejsan", updatedCustomer.CustomerFirstName);
+            Assert.Equal("Hoppsan", updatedCustomer.CustomerLastName);
+
+            _output.WriteLine($"Customer updated from: {oldFirstName} {oldLastName} to: {updatedCustomer.CustomerFirstName} {updatedCustomer.CustomerLastName}");
+        }
+
+        [Fact]
+        public void CanDeleteCustomer()
+        {
+            var customer = TestHelper.CreateTestCustomer();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+
+            var savedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
+            Assert.NotNull(savedCustomer);
+            _context.Customers.Remove(savedCustomer);
+            _context.SaveChanges();
+            var deletedCustomer = _context.Customers.FirstOrDefault(c => c.CustomerId == savedCustomer.CustomerId);
+            Assert.Null(deletedCustomer);
+            _output.WriteLine($"Customer deleted: {savedCustomer.CustomerFirstName} {savedCustomer.CustomerLastName}");
+        }
     }
 }
